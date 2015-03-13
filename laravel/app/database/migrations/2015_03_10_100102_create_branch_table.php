@@ -10,13 +10,11 @@ class CreateBranchTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		Schema::create('Branch', function(Blueprint $table)
-		{
+	public function up() {
+		Schema::create('Branches', function(Blueprint $table) {
             $table->increments('Branch_ID');
             $table->string('Name');
-            $table->string('Branch_Code');
+            $table->string('Branch_Code')->unique();
             $table->string('Address');
             $table->string('Phone_Number');
 			$table->timestamps();
@@ -28,9 +26,7 @@ class CreateBranchTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
-		Schema::drop('Branch');
+	public function down() {
+		Schema::drop('Branches');
 	}
-
 }
