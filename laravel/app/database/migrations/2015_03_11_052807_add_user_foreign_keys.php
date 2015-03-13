@@ -10,12 +10,9 @@ class AddUserForeignKeys extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		Schema::table('User', function(Blueprint $table)
-        {
-            $table->foreign('Permission_ID')->references('Permission_ID')->on('Permission');
-            $table->foreign('Branch_ID')->references('Branch_ID')->on('Branch');
+	public function up() {
+		Schema::table('Users', function(Blueprint $table) {
+            $table->foreign('Branch_ID')->references('Branch_ID')->on('Branches');
 		});
 	}
 
@@ -24,11 +21,9 @@ class AddUserForeignKeys extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
-		Schema::table('User', function(Blueprint $table)
-		{
-			$table->dropForeign('Permission_ID_foreign');
+	public function down() {
+		Schema::table('Users', function(Blueprint $table) {
+			$table->dropForeign('Branch_ID_foreign');
 		});
 	}
 

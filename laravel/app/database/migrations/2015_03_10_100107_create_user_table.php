@@ -10,17 +10,16 @@ class CreateUserTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		Schema::create('User', function(Blueprint $table)
-		{
+	public function up() {
+		Schema::create('Users', function(Blueprint $table) {
             $table->increments('User_ID');
             $table->string('First_Name');
             $table->string('Last_Name');
             $table->string('Email')->unique();
             $table->string('Password');
             $table->string('Phone_Number');
-            $table->integer('Permission_ID')->nullable();
+            //0=User, 1=Manager, 2=Admin
+            $table->integer('Permission_ID');
             $table->integer('Branch_ID')->nullable();
 			$table->timestamps();
 		});
@@ -31,9 +30,7 @@ class CreateUserTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
-		Schema::drop('User');
+	public function down() {
+		Schema::drop('Users');
 	}
-
 }

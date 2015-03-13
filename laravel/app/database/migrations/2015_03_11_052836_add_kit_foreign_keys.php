@@ -10,11 +10,9 @@ class AddKitForeignKeys extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		Schema::table('Kit', function(Blueprint $table)
-		{
-            $table->foreign('Item_ID')->references('Item_ID')->on('Item');
+	public function up() {
+		Schema::table('Kits', function(Blueprint $table) {
+            //$table->foreign('Items')->references('Items')->on('Items');
             $table->foreign('Status_ID')->references('Status_ID')->on('Status');
 		});
 	}
@@ -24,13 +22,10 @@ class AddKitForeignKeys extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
-		Schema::table('Kit', function(Blueprint $table)
-		{
-            $table->dropForeign('Item_ID_foreign');
+	public function down() {
+		Schema::table('Kits', function(Blueprint $table) {
+            //$table->dropForeign('Item_ID_foreign');
             $table->dropForeign('Status_ID_foreign');
 		});
 	}
-
 }
