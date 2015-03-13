@@ -10,12 +10,10 @@ class CreateBlackoutTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		Schema::create('Blackout', function(Blueprint $table)
-		{
+	public function up() {
+		Schema::create('Blackouts', function(Blueprint $table) {
             $table->increments('Blackout_ID');
-            $table->string('Blackout_Day');
+            $table->date('Blackout_Day');
             $table->string('Blackout_Description');
 			$table->timestamps();
 		});
@@ -26,9 +24,7 @@ class CreateBlackoutTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
-		Schema::drop('Blackout');
+	public function down() {
+		Schema::drop('Blackouts');
 	}
-
 }
