@@ -13,5 +13,12 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+    return View::make('hello');
 });
+
+Route::get('/booking', function()
+{
+    return View::make('booking');
+});
+
+Route::resource('booking','BookingsController');
