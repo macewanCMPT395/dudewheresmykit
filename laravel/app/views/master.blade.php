@@ -51,7 +51,7 @@
             </div>
          </div>
         <div id="main">
-            </h1> CURRENT PAGE TITLE </h1>
+            </h1> @yield ('head') </h1>
             <div id= "content">
                 @yield ('content')
                 

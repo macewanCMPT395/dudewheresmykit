@@ -1,45 +1,47 @@
 @extends ('master')
 
+@section ('head')
+
+Create a booking
+
+@stop
+
 @section ('content')
 
-    <div>
-    <p> Create a Booking </p>
-    </div>
-
 <div id = "form">
-    {{ Form::open(array['route' => 'booking.store'])}}
+    {{ Form::open(array('route' => 'booking.store'))}}
 <div>
 
     {{ Form::label('email', 'Email') }}
-    {{ Form::email('email') }}
+    {{ Form::text('email') }}
    
 </div>
 
 <div>
 
     {{ Form::label('name', 'Name') }}
-    {{ Form::name('name') }}
+    {{ Form::text('name') }}
 
 </div>
 
 <div>
 
     {{ Form::label('phone', 'Phone') }}
-    {{ Form::phone('phone') }}
+    {{ Form::text('phone') }}
 
 </div>
 
 <div>
 
-    {{ Form::startdate('start', 'Start Date') }}
-    {{ Form::start('start') }}
+    {{ Form::label('start', 'Start Date') }}
+    {{ Form::text('start') }}
 
 </div>
 
 <div>
 
-    {{ Form::enddate ('end', 'End Date') }}
-    {{ Form::end('end') }}
+    {{ Form::label ('end', 'End Date') }}
+    {{ Form::text('end') }}
 
 </div>
 
@@ -47,4 +49,7 @@
     <div> {{ Form::submit ('Book it') }} </div>
 
     {{Form::close()}}
+
+</div>
+
 @stop
