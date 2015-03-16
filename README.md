@@ -21,7 +21,7 @@ Execute the following commands in the repository root directory:
 
 --clean autoload files
 
-    $ php artisan dump-autoload
+    $ composer dump-autoload
 
 Test installation:
 

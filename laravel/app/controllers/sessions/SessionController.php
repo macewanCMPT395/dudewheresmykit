@@ -1,6 +1,6 @@
 <?php
 
-class SessionController.php extends \BaseController {
+class SessionController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -20,7 +20,7 @@ class SessionController.php extends \BaseController {
 	 */
 	public function create()
 	{
-		//return View::make('folder.bladefile');
+		return View::make('create');
 	}
 
 
@@ -36,9 +36,9 @@ class SessionController.php extends \BaseController {
     //need to account for salt in the hash when attempting Auth()
 
         if(Auth::attempt($credentials, true)) {
-            //return View::redirect('folder.bladefile');
+            return View::redirect('test');
         }
-        else return dd(Auth::user());
+        else return View::make('fail');
 	}
 
 
