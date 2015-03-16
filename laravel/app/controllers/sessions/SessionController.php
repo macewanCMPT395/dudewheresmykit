@@ -36,9 +36,9 @@ class SessionController extends \BaseController {
     //need to account for salt in the hash when attempting Auth()
 
         if(Auth::attempt($credentials, true)) {
-            return View::redirect('test');
+            return View::make('test');
         }
-        else return View::make('fail');
+        else return dd(Auth::user());
 	}
 
 

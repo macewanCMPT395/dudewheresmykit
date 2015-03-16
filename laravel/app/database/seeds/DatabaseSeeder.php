@@ -21,11 +21,13 @@ class UserTableSeeder extends Seeder {
 
     public function run() {
 
+        Eloquent::unguard();
+
         User::create(array(
             'First_Name' => 'Lee',
             'Last_Name' => 'Humeniuk',    
-            'Email' => 'lee.humeniuk@outlook.com',
-            'Password' => 'Admin',
+            'Email' => 'admin@outlook.com',
+            'Password' => Hash::make('Admin'),
             'Phone_Number' => '7806606199'
     ));
 
