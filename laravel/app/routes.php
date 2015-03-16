@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::resource('sessions', 'SessionController');
+Route::get('/', 'SessionController@create');
+//sessions is assumed folder that all session related views are in i.e login form
