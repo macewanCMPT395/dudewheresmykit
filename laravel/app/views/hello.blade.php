@@ -1,5 +1,6 @@
-@extends('master')
 
-@section('content')
-    Lopem ismum
+@extends ('master')
+
+@section ('content')
+    lorum ipsum
 @stop
