@@ -15,7 +15,7 @@ class CreateItemTable extends Migration {
             $table->increments('Item_ID');
             $table->string('Item_Name');
             $table->string('Item_Description');
-            $table->integer('Asset_Tag');
+            $table->integer('Asset_Tag')->unique();
             $table->string('Note')->nullable();
 			$table->timestamps();
 		});
