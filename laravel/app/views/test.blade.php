@@ -1,5 +1,2 @@
-<html>
-<body>
-<p>Login Successful<p>
-</body>
-</html>
+@extends('master')
+
