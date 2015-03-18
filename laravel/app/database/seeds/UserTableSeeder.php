@@ -40,8 +40,8 @@ class UserTableSeeder extends Seeder {
 
 		//
 
-		//20 users
-		for($i = 0; $i < 20; ++$i){
+		//200 users
+		for($i = 0; $i < 200; ++$i){
 			$name = explode(' ', $faker->name);
 			User::create(array(
 				'first_name' => $name[0],
@@ -51,7 +51,7 @@ class UserTableSeeder extends Seeder {
 				'phone' => $faker->phoneNumber,
 				'permission_id' => 0,
 				'remember_token' => str_random(64),
-				'branch_id' => $faker->numberBetween(1, $maxBranchId)
+				'branch_id' => $faker->numberBetween(0, $maxBranchId)
 			));
 		}
 		//2 Managers
@@ -65,7 +65,7 @@ class UserTableSeeder extends Seeder {
 				'phone' => $faker->phoneNumber,
 				'permission_id' => 1,
 				'remember_token' => str_random(64),
-				'branch_id' => $faker->numberBetween(1, $maxBranchId)
+				'branch_id' => $faker->numberBetween(0, $maxBranchId)
 			));
 		}
 	}
