@@ -12,7 +12,7 @@ class AddUserForeignKeys extends Migration {
 	 */
 	public function up() {
 		Schema::table('Users', function(Blueprint $table) {
-            $table->foreign('Branch_ID')->references('Branch_ID')->on('Branches');
+            $table->foreign('branch_id')->references('id')->on('branches');
 		});
 	}
 
@@ -23,7 +23,7 @@ class AddUserForeignKeys extends Migration {
 	 */
 	public function down() {
 		Schema::table('Users', function(Blueprint $table) {
-			$table->dropForeign('Branch_ID_foreign');
+			$table->dropForeign('branch_id_foreign');
 		});
 	}
 

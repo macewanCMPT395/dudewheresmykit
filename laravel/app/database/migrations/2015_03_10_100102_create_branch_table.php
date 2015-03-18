@@ -12,11 +12,11 @@ class CreateBranchTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('Branches', function(Blueprint $table) {
-            $table->increments('Branch_ID');
-            $table->string('Name');
-            $table->string('Branch_Code')->unique();
-            $table->string('Address');
-            $table->string('Phone_Number');
+            $table->increments('id');
+            $table->string('name');
+            $table->string('code')->unique();
+            $table->string('address');
+            $table->string('phone');
 			$table->timestamps();
 		});
 	}

@@ -14,10 +14,10 @@ class BranchTableSeeder extends Seeder {
 
 		for($i = 1; $i < $len; ++$i){
 			Branch::create(array(
-				'Name' => DatabaseSeeder::grabTag($html[$i], "Name"),
-				'Branch_Code' => substr(DatabaseSeeder::grabTag($html[$i], "BranchId"), 3),
-				'Address' => DatabaseSeeder::grabTag($html[$i], "Address"),
-				'Phone_Number' => DatabaseSeeder::grabTag($html[$i], "PhoneNumber"),
+				'name' => DatabaseSeeder::grabTag($html[$i], "Name"),
+				'code' => substr(DatabaseSeeder::grabTag($html[$i], "BranchId"), 3),
+				'address' => DatabaseSeeder::grabTag($html[$i], "Address"),
+				'phone' => DatabaseSeeder::grabTag($html[$i], "PhoneNumber"),
 			));
 		}
 	}
