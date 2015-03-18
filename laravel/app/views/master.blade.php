@@ -1,70 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-    @if(isset($title))
-
-        <title>KIT-MTS | {{{ $title }}}</title>
-
-    @else
-        <title>KIT-MTS</title>    
-    @endif
-    <meta charset="UTF-8">
-    {{ HTML::style("css/master.css") }}
-</head>
-<body>
-      <div id ="user">
-                @if(Auth::check()) 
-                    Welcome back, {{{ Auth::user()->Username }}} | <a href="#">Logout</a>
-                @else
-                    You are not logged in.
-                @endif
+    <head>
+        @if(isset($title))
+            <title>KIT-MTS | {{{ $title }}}</title>
+        @else
+            <title>KIT-MTS</title>
+        @endif
+        <meta charset="UTF-8">
+        {{ HTML::style("css/master.css") }}
+    </head>
+    <body>
+        <div id ="user">
+            @if(Auth::check())
+                Welcome back, {{{ Auth::user()->first_name }}} {{{ Auth::user()->last_name }}} | <a href="/logout">Logout</a>
+            @else
+                You are not logged in.
+            @endif
         </div>
 
-    <div id="container">
-        <div id="banner">
-            <span id="logo">
-                EPL
-            </span>
-            <ul id="menu">
-                <a href="/booking" id="menuItem1" ><li>Book a kit</li></a>
-                <a href="#" id="menuItem2" ><li>View kits</li></a>
-                <a href="#" id="menuItem3" ><li>Summary</li></a>
-                <a href="#" id="menuItem4" ><li>Help</li></a>
-                <a href="#" id="menuItem5" ><li>Account</li></a>
-            </ul>
-        </div>
-     
+        <div id="container">
+            <div id="banner">
+                <span id="logo">
+                    EPL
+                </span>
+                <ul id="menu">
+                    <a href="/booking" id="menuItem1" ><li>Book a kit</li></a>
+                    <a href="#" id="menuItem2" ><li>View kits</li></a>
+                    <a href="#" id="menuItem3" ><li>Summary</li></a>
+                    <a href="#" id="menuItem4" ><li>Help</li></a>
+                    <a href="#" id="menuItem5" ><li>Account</li></a>
+                </ul>
+            </div>
             <br style="clear:both;">
 
             @if(Session::has('errors'))
-
+                <!-- Error Content -->
             @endif
-
             @if(Session::has('message'))
-
+                <!-- Message Content -->
             @endif
 
-        
-
-        <div id="side">
-
-                 <div id="content">
-                 </h1> Summary </h1>
-                    @yield ('sidebar')
+            <div id="side">
+                <h1>Summary</h1>
+                @yield ('sidebar')
             </div>
-         </div>
-        <div id="main">
-            
-            <div id= "content">
-                @if(isset($title))
-                    <h1>{{{ $title }}}</h1>
-                @endif
-                @yield ('content')
-                
+
+            <div id="main">
+                <h1>
+                    @if(isset($title))
+                        {{{ $title }}}
+                    @else
+                        Default
+                    @endif
+                </h1>
+                <div id="content">
+                    @yield('content')
+                </div>
             </div>
-        </div>    <br style="clear:both;">
+            <br style="clear:both;">
+            </div>
         </div>
-    </div>
-</body>
-
+    </body>
 </html>
