@@ -12,8 +12,8 @@ class BlackoutTableSeeder extends Seeder {
 		for($i = 1; $i < $len; ++$i){
 			//Find the holiday name
 			Blackout::create(array(
-				'Blackout_Day' => DatabaseSeeder::grabTag($html[$i], "HolidayDate"),
-				'Blackout_Description' => DatabaseSeeder::grabTag($html[$i], "HolidayName")
+				'day' => DatabaseSeeder::grabTag($html[$i], "HolidayDate"),
+				'description' => DatabaseSeeder::grabTag($html[$i], "HolidayName")
 			));
 
 		}

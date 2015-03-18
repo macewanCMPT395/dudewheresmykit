@@ -12,9 +12,9 @@ class CreateStatusTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('Status', function(Blueprint $table) {
-            $table->increments('Status_ID');
-            $table->string('Status_Code');
-            $table->string('Status_Description');
+            $table->increments('id');
+            $table->string('code');
+            $table->string('description');
 			$table->timestamps();
 		});
 	}

@@ -7,32 +7,35 @@ class UserTableSeeder extends Seeder {
 		//Static Users
 
 		User::create(array(
-			'First_Name' => 'John',
-			'Last_Name' => 'Doe',
-			'Email' => 'jDoe@email.com',
-			'Password' => Hash::make('user'),
-			'Phone_Number' => '+1(555)555-5555',
-			'Permission_ID' => 0,
-			'Branch_ID' => 1
+			'first_name' => 'John',
+			'last_name' => 'Doe',
+			'email' => 'jdoe@email.com',
+			'password' => Hash::make('user'),
+			'phone' => '+1(555)555-5555',
+			'permission_id' => 0,
+			'remember_token' => str_random(64),
+			'branch_id' => 1
 		));
 
 		User::create(array(
-			'First_Name' => 'Jack',
-			'Last_Name' => 'Doe',
-			'Email' => 'jDoe2@email.com',
-			'Password' => Hash::make('manager'),
-			'Phone_Number' => '+1(555)555-5555',
-			'Permission_ID' => 1,
-			'Branch_ID' => 1
+			'first_name' => 'Jack',
+			'last_name' => 'Doe',
+			'email' => 'jdoe2@email.com',
+			'password' => Hash::make('manager'),
+			'phone' => '+1(555)555-5555',
+			'permission_id' => 1,
+			'remember_token' => str_random(64),
+			'branch_id' => 1
 		));
 
 		User::create(array(
-			'First_Name' => 'Jane',
-			'Last_Name' => 'Doe',
-			'Email' => 'jDoe3@email.com',
-			'Password' => Hash::make('admin'),
-			'Phone_Number' => '+1(555)555-5555',
-			'Permission_ID' => 2
+			'first_name' => 'Jane',
+			'last_name' => 'Doe',
+			'email' => 'jdoe3@email.com',
+			'password' => Hash::make('admin'),
+			'phone' => '+1(555)555-5555',
+			'remember_token' => str_random(64),
+			'permission_id' => 2
 		));
 
 		//
@@ -41,26 +44,28 @@ class UserTableSeeder extends Seeder {
 		for($i = 0; $i < 20; ++$i){
 			$name = explode(' ', $faker->name);
 			User::create(array(
-				'First_Name' => $name[0],
-				'Last_Name' => $name[1],
-				'Email' => $faker->unique->email,
-				'Password' => Hash::make($faker->word),
-				'Phone_Number' => $faker->phoneNumber,
-				'Permission_ID' => 0,
-				'Branch_ID' => $faker->numberBetween(1, $maxBranchId)
+				'first_name' => $name[0],
+				'last_name' => $name[1],
+				'email' => strtolower($faker->unique->email),
+				'password' => Hash::make($faker->word),
+				'phone' => $faker->phoneNumber,
+				'permission_id' => 0,
+				'remember_token' => str_random(64),
+				'branch_id' => $faker->numberBetween(1, $maxBranchId)
 			));
 		}
 		//2 Managers
 		for($i = 0; $i < 2; ++$i){
 			$name = explode(' ', $faker->name);
 			User::create(array(
-				'First_Name' => $name[0],
-				'Last_Name' => $name[1],
-				'Email' => $faker->unique->email,
-				'Password' => Hash::make($faker->word),
-				'Phone_Number' => $faker->phoneNumber,
-				'Permission_ID' => 1,
-				'Branch_ID' => $faker->numberBetween(1, $maxBranchId)
+				'first_name' => $name[0],
+				'last_name' => $name[1],
+				'email' => strtolower($faker->unique->email),
+				'password' => Hash::make($faker->word),
+				'phone' => $faker->phoneNumber,
+				'permission_id' => 1,
+				'remember_token' => str_random(64),
+				'branch_id' => $faker->numberBetween(1, $maxBranchId)
 			));
 		}
 	}

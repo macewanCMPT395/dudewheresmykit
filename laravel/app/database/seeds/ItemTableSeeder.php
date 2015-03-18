@@ -15,16 +15,16 @@ class ItemTableSeeder extends Seeder {
 			$index = $faker->numberBetween(0, $count - 1);
 			if($faker->numberBetween(0, 10) == 5){
 				Item::create(array(
-					'Item_Name' => $names[$index],
-					'Item_Description' => $descs[$index],
-					'Asset_Tag' => '31221' . $faker->unique()->numberBetween(100000, 999999),
-					'Note' => $faker->text(64)
+					'name' => $names[$index],
+					'description' => $descs[$index],
+					'asset_tag' => '31221' . $faker->unique()->numberBetween(100000, 999999),
+					'note' => $faker->text(64)
 				));
 			}else{
 				Item::create(array(
-					'Item_Name' => $names[$index],
-					'Item_Description' => $descs[$index],
-					'Asset_Tag' => '31221' . $faker->unique()->numberBetween(100000, 999999)
+					'name' => $names[$index],
+					'description' => $descs[$index],
+					'asset_tag' => '31221' . $faker->unique()->numberBetween(100000, 999999)
 				));
 			}
 		}

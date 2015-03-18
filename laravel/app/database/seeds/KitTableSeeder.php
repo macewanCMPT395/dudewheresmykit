@@ -11,10 +11,10 @@ class KitTableSeeder extends Seeder {
 				array_push($itemArr, $faker->numberBetween(0, $maxItemID));
 			}
 			Kit::create(array(
-				'Kit_Code' => $faker->unique()->numberBetween(0, 255655),
-				'Kit_Description' => $faker->text(64),
-				'Items' => serialize($itemArr),
-				'Status_ID' => $faker->numberBetween(0, $maxStatusCode),
+				'code' => $faker->unique()->numberBetween(0, 255655),
+				'description' => $faker->text(64),
+				'items' => serialize($itemArr),
+				'status_id' => $faker->numberBetween(0, $maxStatusCode),
 			));
 		}
 	}

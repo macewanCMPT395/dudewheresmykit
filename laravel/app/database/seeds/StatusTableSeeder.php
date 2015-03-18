@@ -9,8 +9,8 @@ class StatusTableSeeder extends Seeder {
             );
             foreach ($codes as $key => $value){
                   Status::create(array(
-                        'Status_Code' => $key,
-                        'Status_Description' => $value
+                        'code' => $key,
+                        'description' => $value
                   ));
             }
 	}
