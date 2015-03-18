@@ -31,14 +31,15 @@ class SessionController extends \BaseController {
 	 */
 	public function store()
 	{
-        $credentials = array('email' => Input::get('email'), 'password' => Input::get('password'));
-    
+
     //need to account for salt in the hash when attempting Auth()
 
-        if(Auth::attempt($credentials, true)) {
-            return View::make('test');
+        if(Auth::attempt(Input::only('Email','Password')))
+         {
+            return Auth::user();
         }
-        else return dd(Auth::user());
+
+        return 'Failed!';
 	}
 
 

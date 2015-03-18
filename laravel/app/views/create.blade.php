@@ -4,15 +4,15 @@
 Log In
 </div>
 <div id="form">
-{{ Form::open(['route' => 'sessions.store']) }}
+{{ Form::open() }}
 
 <div>
-{{ Form::label('email', 'Email: ') }}
-{{ Form::email('email') }}
+{{ Form::label('Email', 'Email: ') }}
+{{ Form::email('Email') }}
 </div>
 <div>
-{{ Form::label('password', 'Password: ') }}
-{{ Form::password('password')}}
+{{ Form::label('Password', 'Password: ') }}
+{{ Form::password('Password')}}
 </div>
 
  <div> {{ Form::submit('Log In') }}</div> 
