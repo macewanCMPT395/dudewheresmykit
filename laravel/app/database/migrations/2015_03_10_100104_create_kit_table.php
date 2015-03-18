@@ -12,12 +12,12 @@ class CreateKitTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('Kits', function(Blueprint $table) {
-            $table->increments('Kit_ID');
-            $table->integer('Kit_Code')->unique();
-            $table->string('Kit_Description')->nullable();
-            $table->string('Items');
-            $table->integer('Status_ID')->nullable();
-            $table->string('Note')->nullable();
+            $table->increments('id');
+            $table->integer('code')->unique();
+            $table->string('description')->nullable();
+            $table->string('items');
+            $table->integer('status_id')->nullable();
+            $table->string('note')->nullable();
 			$table->timestamps();
 		});
 	}

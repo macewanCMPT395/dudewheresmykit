@@ -14,11 +14,11 @@ class BookingTableSeeder extends Seeder {
 				array_push($users, $faker->numberBetween(0, $maxUser));
 			}
 			Booking::create(array(
-				'User_IDs' => serialize($users),
-				'Destination_Branch_ID' => $faker->numberBetween(0, $maxBranch),
-				'Kit_ID' => $faker->numberBetween(0, $maxKit),
-				'Start_Date' => $startDay,
-				'End_Date' => $endDay
+				'user_ids' => serialize($users),
+				'destination_branch_id' => $faker->numberBetween(0, $maxBranch),
+				'kit_id' => $faker->numberBetween(0, $maxKit),
+				'start_date' => $startDay,
+				'end_date' => $endDay
 			));
 		}
 

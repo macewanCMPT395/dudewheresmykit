@@ -12,9 +12,9 @@ class CreateBlackoutTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('Blackouts', function(Blueprint $table) {
-            $table->increments('Blackout_ID');
-            $table->date('Blackout_Day');
-            $table->string('Blackout_Description');
+            $table->increments('id');
+            $table->date('day');
+            $table->string('description');
 			$table->timestamps();
 		});
 	}

@@ -12,10 +12,8 @@ class AddBookingForeignKeys extends Migration {
 	 */
 	public function up() {
 		Schema::table('Bookings', function(Blueprint $table) {
-            //$table->foreign('User_ID')->references('User_ID')->on('Users');
-            $table->foreign('Origin_Branch_ID')->references('Branch_ID')->on('Branches');
-            $table->foreign('Destination_Branch_ID')->references('Branch_ID')->on('Branches');
-            $table->foreign('Kit_ID')->references('Kit_ID')->on('Kits');
+            $table->foreign('destination_branch_id')->references('id')->on('Branches');
+            $table->foreign('kit_id')->references('id')->on('Kits');
     	});
 	}
 
@@ -26,10 +24,8 @@ class AddBookingForeignKeys extends Migration {
 	 */
 	public function down() {
 		Schema::table('Bookings', function(Blueprint $table) {
-            //$table->dropForeign('User_ID_foreign');
-            $table->dropForeign('Origin_Branch_ID');
-            $table->dropForeign('Destination_Branch_ID');
-            $table->dropForeign('Kit_ID_foreign');
+            $table->dropForeign('destination_branch_id');
+            $table->dropForeign('kit_id_foreign');
 		});
 	}
 }

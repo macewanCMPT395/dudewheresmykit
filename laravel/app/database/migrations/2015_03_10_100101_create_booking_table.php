@@ -12,12 +12,12 @@ class CreateBookingTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('Bookings', function(Blueprint $table) {
-            $table->increments('Booking_ID');
-            $table->string('User_IDs');
-            $table->integer('Destination_Branch_ID');
-            $table->integer('Kit_ID');
-            $table->date('Start_Date');
-            $table->date('End_Date');
+            $table->increments('id');
+            $table->string('user_ids');
+            $table->integer('destination_branch_id');
+            $table->integer('kit_id');
+            $table->date('start_date');
+            $table->date('end_date');
 			$table->timestamps();
 		});
 	}

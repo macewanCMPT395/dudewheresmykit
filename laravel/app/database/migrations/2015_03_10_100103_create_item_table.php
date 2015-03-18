@@ -12,11 +12,11 @@ class CreateItemTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('Items', function(Blueprint $table) {
-            $table->increments('Item_ID');
-            $table->string('Item_Name');
-            $table->string('Item_Description');
-            $table->integer('Asset_Tag')->unique();
-            $table->string('Note')->nullable();
+            $table->increments('id');
+            $table->string('name');
+            $table->string('description');
+            $table->integer('asset_tag')->unique();
+            $table->string('note')->nullable();
 			$table->timestamps();
 		});
 	}
