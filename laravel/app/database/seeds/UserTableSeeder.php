@@ -9,7 +9,7 @@ class UserTableSeeder extends Seeder {
 		User::create(array(
 			'first_name' => 'John',
 			'last_name' => 'Doe',
-			'email' => 'jdoe@email.com',
+			'email' => 'randomtestmailer+jdoeuser@gmail.com',
 			'password' => Hash::make('user'),
 			'phone' => '+1(555)555-5555',
 			'permission_id' => 0,
@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder {
 		User::create(array(
 			'first_name' => 'Jack',
 			'last_name' => 'Doe',
-			'email' => 'jdoe2@email.com',
+			'email' => 'randomtestmailer+jdoemanager@gmail.com',
 			'password' => Hash::make('manager'),
 			'phone' => '+1(555)555-5555',
 			'permission_id' => 1,
@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder {
 		User::create(array(
 			'first_name' => 'Jane',
 			'last_name' => 'Doe',
-			'email' => 'jdoe3@email.com',
+			'email' => 'randomtestmailer+jdoeadmin@gmail.com',
 			'password' => Hash::make('admin'),
 			'phone' => '+1(555)555-5555',
 			'remember_token' => str_random(64),
@@ -40,13 +40,18 @@ class UserTableSeeder extends Seeder {
 
 		//
 
-		//20 users
-		for($i = 0; $i < 20; ++$i){
-			$name = explode(' ', $faker->name);
+		//200 users
+		for($i = 0; $i < 200; ++$i){
+			$name1 = $faker->unique->name;
+			$name = explode(' ', $name1);
+			if((strpos($name[0], '.') != -1) && count($name) > 2){ //Dr. Mr. ... etc
+				$name[0] = $name[1];
+				$name[1] = $name[2];
+			}
 			User::create(array(
 				'first_name' => $name[0],
 				'last_name' => $name[1],
-				'email' => strtolower($faker->unique->email),
+				'email' => "randomtestmailer+" . $name1 . "@gmail.com",
 				'password' => Hash::make($faker->word),
 				'phone' => $faker->phoneNumber,
 				'permission_id' => 0,
@@ -56,11 +61,16 @@ class UserTableSeeder extends Seeder {
 		}
 		//2 Managers
 		for($i = 0; $i < 2; ++$i){
-			$name = explode(' ', $faker->name);
+			$name1 = $faker->unique->name;
+			$name = explode(' ', $name1);
+			if((strpos($name[0], '.') != -1) && count($name) > 2){
+				$name[0] = $name[1];
+				$name[1] = $name[2];
+			}
 			User::create(array(
 				'first_name' => $name[0],
 				'last_name' => $name[1],
-				'email' => strtolower($faker->unique->email),
+				'email' => "randomtestmailer+" . $name1 . "@gmail.com",
 				'password' => Hash::make($faker->word),
 				'phone' => $faker->phoneNumber,
 				'permission_id' => 1,
