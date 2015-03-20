@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'Chaoticpsychosss@gmail.com', 'name' => 'David'),
+	'from' => array('address' => 'randomtestmailer@gmail.com', 'name' => 'KIT-MTS'),
 
 	/*
 	|--------------------------------------------------------------------------
