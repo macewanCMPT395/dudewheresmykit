@@ -17,6 +17,7 @@ Route::post('/login', function() {
 	);
 
 	if(Auth::attempt($cred)) return Redirect::intended('/');
+	else Session::flash("badlogin", true);
 	return Redirect::to('/login');
 });
 
