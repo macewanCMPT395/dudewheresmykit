@@ -8,8 +8,15 @@ class SummaryController extends \BaseController {
 	 * @return Response
 	 */
 	public function index()
-	{
-		//
+    {
+        $id = Auth::user()->id;
+        $results = Booking::whereRaw('user_ids = '.$id.' 
+            AND start_date >= DATE()', array())->get();
+        $data = array (
+            'title' => "Summary",
+            'results' => $results
+        );
+        return View::make('summary')->with($data);
 	}
 
 
