@@ -26,7 +26,7 @@
 				<ul id="menu">
 					<a href="/booking" id="menuItem1" ><li>Book a kit</li></a>
 					<a href="#" id="menuItem2" ><li>View kits</li></a>
-					<a href="#" id="menuItem3" ><li>Summary</li></a>
+					<a href="/summary" id="menuItem3" ><li>Summary</li></a>
 					<a href="#" id="menuItem4" ><li>Help</li></a>
 					<a href="#" id="menuItem5" ><li>Account</li></a>
 				</ul>
