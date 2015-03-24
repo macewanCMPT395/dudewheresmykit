@@ -12,7 +12,7 @@
 	<body>
 		<div id ="user">
 			@if(Auth::check())
-				Welcome back, {{{ Auth::user()->first_name }}} {{{ Auth::user()->last_name }}} | <a href="/logout">Logout</a>
+				Welcome back, {{{ Auth::user()->getName() }}} | <a href="/logout">Logout</a>
 			@else
 				You are not logged in.
 			@endif
