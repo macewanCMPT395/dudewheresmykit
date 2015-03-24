@@ -34,11 +34,18 @@ class BookingsController extends \BaseController {
 	 * @return Response
 	 */
 	public function store()
-	{
-		//
-	}
+    {
+        $email = '203,120,100';
+        $mail =  array (explode( ',' , $email,-1 ));
+        
+      foreach ($mail as $recipient){
 
-
+            Mail::send('email/bookingEmail',$recipient,function($message){
+                $message->to("$recipient")->subject('Booking Creation');
+           });
+	       
+        }
+    }
 	/**
 	 * Display the specified resource.
 	 *
