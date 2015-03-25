@@ -15,7 +15,6 @@ class CreateKitTable extends Migration {
             $table->increments('id');
             $table->integer('code')->unique();
             $table->string('description')->nullable();
-            $table->string('items');
             $table->integer('status_id')->nullable();
             $table->string('note')->nullable();
 			$table->timestamps();
