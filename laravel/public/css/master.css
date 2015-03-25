@@ -63,7 +63,7 @@ Input[Type=text], Input[Type=password], Input[Type=date], select, option {
 	width: 200px;
 	height: 25px;
 	border: solid 2px #00E3E3;
-	padding: 2px 2px 2px 2px;
+	padding: 2px;
 	border-radius: 5px;
 	font-size: 12px;
 	box-shadow: 0px 1px 2px 0px #9C9C9C;
@@ -91,7 +91,7 @@ label {
 #container {
 	margin-left:auto;
 	margin-right:auto;
-	max-width:1024px;
+	width:1024px;
 	box-shadow: 3px 3px 3px #111111;
 	background-color: #fff;
 }
@@ -172,6 +172,7 @@ label {
 }
 
 #user {
+	color: #000;
 	font-weight:bolder;
 	float:right;
 	margin-top:15px;
@@ -251,6 +252,7 @@ h1 {
 
 #summary-table table {
 	width: 100%;
+}
 
 .kit {
 	border: 1px solid #000;

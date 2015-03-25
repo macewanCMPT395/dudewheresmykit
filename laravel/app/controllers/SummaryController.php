@@ -14,6 +14,7 @@ class SummaryController extends \BaseController {
 			->get();
 		$data = array (
 			'title' => "Summary",
+			'single' => true,
 			'results' => $results
 		);
 		return View::make('summary')->with($data);
