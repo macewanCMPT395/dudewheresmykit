@@ -5,26 +5,26 @@
 
 	{{ Form::open(array('url' => 'kits/store')) }}
 
-	{{ Form::label('code', 'Barcode') }}	
-	{{ Form::text('code') }}
-	
-	<br>
+		{{ Form::label('code', 'Barcode') }}	
+		{{ Form::text('code') }}
+		
+		<br>
 
-	{{ Form::label('type_id', 'Type of Kit') }}	
-	{{ Form::select('type_id', $types) }}
+		{{ Form::label('type_id', 'Type of Kit') }}	
+		{{ Form::select('type_id', $types) }}
 
-	<br>
+		<br>
 
-	{{ Form::label('branch_id', "Current Branch") }}
-	{{ Form::select('branch_id', $branches) }} 
+		{{ Form::label('branch_id', "Current Branch") }}
+		{{ Form::select('branch_id', $branches) }} 
 
-	<br>
-	
-	{{ Form::label('description', 'Description') }}
-	{{ Form::textarea('description') }}
+		<br>
+		
+		{{ Form::label('description', 'Description') }}
+		{{ Form::textarea('description') }}
 
-	<br>
-	
+		<br>
+		
 	{{ Form::submit("Submit") }}
 	{{ Form::close() }}
 @stop
