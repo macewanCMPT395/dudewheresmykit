@@ -4,15 +4,15 @@ return array(
 
 	'driver' => 'smtp',
 
-	'host' => 'smpt.gmail.com',
+	'host' => 'smtp.gmail.com',
 
-	'port' => 587,
+	'port' => 465,
 
 	'from' => array('address' => 'randomtestmailer@gmail.com', 'name' => 'KIT-MTS',
 
-	'encryption' => 'tls',
+	'encryption' => 'SSL',
 
-	'username' => 'randomtestmailer@gmail.com',
+	'username' => 'randomtestmailer',
 
     'password' => 'P2ssword1234',
 
