@@ -4,6 +4,7 @@ Route::group(['before' => 'auth'], function() {
 		return View::make('hello');
 	});
 	Route::resource('booking','BookingsController');
+	Route::get('summary','SummaryController@index');
 });
 
 Route::get('/login', function() {
