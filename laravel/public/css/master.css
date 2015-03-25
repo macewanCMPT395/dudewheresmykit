@@ -196,3 +196,21 @@ h1 {
 	line-height:1.2em;
 	border-radius: 1px;
 }
+
+#summary-table {
+	overflow-y: auto;
+}
+
+#summary-table table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#summary-table th, td {
+	padding: 5px;
+	text-align: left;
+}
+
+#summary-table table {
+	width: 100%;
+}
