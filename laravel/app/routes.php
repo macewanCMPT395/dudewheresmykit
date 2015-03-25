@@ -3,7 +3,8 @@ Route::group(['before' => 'auth'], function() {
 	Route::get('/', function() {
 		return View::make('hello');
 	});
-	Route::resource('booking','BookingsController');
+    Route::resource('booking','BookingsController');
+    Route::resource('summary','SummaryController');
 });
 
 Route::get('/login', function() {

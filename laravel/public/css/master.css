@@ -26,6 +26,18 @@ form {
 	line-height: 2em;
 }
 
+#summary-table table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+#summary-table th, td {
+    padding: 5px;
+    text-align: left;
+}
+#summary-table table {
+    width: 100%;
+}
+
 input[type=submit] {
 	background: #3498db;
 	background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
