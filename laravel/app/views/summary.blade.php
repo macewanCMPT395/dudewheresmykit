@@ -1,7 +1,7 @@
 @extends ('master')
 @section ('content')
 <div id = "summary-table">
-<table style="width:100%">
+<table>
 <tr> 
 <th>Kit Name</th>
 <th>Start Date</th>
