@@ -1,7 +1,7 @@
 <?php
 
 class Item extends Eloquent {
-	public  $table = 'Items';
+	protected $table = 'Items';
 
 	public static function validate($input, $edit=false) {
 		$rules = array(

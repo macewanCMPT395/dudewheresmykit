@@ -7,9 +7,9 @@
 	<p>{{{ $kit->description }}}</p>
 	<p><b>Bookings:</b></p>
 	@foreach($kit->bookings as $booking) 
-	<ul>
-		<li>{{{ substr($booking->start_date,0,10) }}} till {{{ substr($booking->end_date,0,10) }}}</li>
-	</ul>
+		<ul>
+			<li>{{{ substr($booking->start_date,0,10) }}} till {{{ substr($booking->end_date,0,10) }}}</li>
+		</ul>
 	@endforeach
 	<p><b>Kit Contains:</b></p>
 	<ul>
@@ -23,12 +23,10 @@
 				<span class="itemNote">{{{ $item->note }}}</span>
 			@endif
 			<p>{{{ $item->description }}}</p>
-	
-
 		</li>
-		
 	@endforeach
 	</ul>
+
 	<div class="kitButton">
 		<a href="{{{ url("kits/report/$kit->id") }}}"><input type="button" value="Report problem"></a>
 		@if(Auth::user()->permission_id >= 2)
@@ -37,5 +35,4 @@
 			<a href="{{{ url("kits/destroy/$kit->id") }}}" onclick="return confirm('Are you sure you want to delete kit {{{ $kit->code }}}?')"><input type="button" value="Delete kit"></a>
 		@endif
 	</div>
-
 @stop

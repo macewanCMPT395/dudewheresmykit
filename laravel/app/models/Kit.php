@@ -19,8 +19,7 @@ class Kit extends Eloquent {
 
 	// Returns bookings that have not passed yet
 	public function currentBookings() {
-		return $this->hasMany('Booking')->where('end_date', '<=' , 'TIME()' );
-
+		return $this->hasMany('Booking')->where('end_date', '<=' , 'TIME()');
 	}
 
 	public static function validate($input, $edit=false) {

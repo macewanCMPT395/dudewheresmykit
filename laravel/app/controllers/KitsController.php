@@ -9,13 +9,12 @@ class KitsController extends \BaseController {
 	 */
 
 
-	public function index()
-	{
+	public function index() {
 		$kits = Kit::all();
 		$data = array ( 'title' => "Kits",
 						'kits' => $kits,
 						'types' => KitType::all(),
-						'single' => true	);
+						'single' => true);
 		return View::make ('kits/index')->with($data);
 	}
 
@@ -34,14 +33,7 @@ class KitsController extends \BaseController {
 		return View::make ('kits/index')->with($data);
 	}
 
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
+	public function create() {
 		if (Auth::user()->permission_id != 2) {
 			Session::flash("message", "You must be admin to do that!");
 			return Redirect::to("kits/");
@@ -52,7 +44,7 @@ class KitsController extends \BaseController {
 		$branches = array();
 
 		foreach($kitTypes as $type) {
-			$types[$type->id]  = $type->name; 
+			$types[$type->id] = $type->name; 
 		}
 
 		foreach($locations as $branch) {
@@ -65,14 +57,7 @@ class KitsController extends \BaseController {
 		return View::make ('kits/new')->with($data);
 	}
 
-	
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{		
+	public function store()	{		
 		if (Auth::user()->permission_id != 2) {
 			Session::flash("message", "You must be admin to do that!");
 			return Redirect::to("kits/");
@@ -93,18 +78,10 @@ class KitsController extends \BaseController {
 		$kit->save();
 		Session::flash("message", "Created kit sucessfullly.");
 		return Redirect::to("kits/show/$kit->id");
-
 	}
 
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
+	public function show($id) {
 		try {
 			$kit = Kit::findOrFail($id);
 		} catch (Exception $e)  {
@@ -120,15 +97,7 @@ class KitsController extends \BaseController {
 		return View::make("/kits/show")->with($data);
 	}
 
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{			
+	public function edit($id) {			
 		if (Auth::user()->permission_id != 2) {
 			Session::flash("message", "You must be admin to do that!");
 			return Redirect::to("kits/");
@@ -161,16 +130,8 @@ class KitsController extends \BaseController {
 
 		return View::make("kits/edit")->with($data);
 	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
+	 
+	public function update($id) {
 		
 		$userinput = Input::all();
 		$kit = Kit::findOrFail($id);
@@ -203,15 +164,7 @@ class KitsController extends \BaseController {
 		return Redirect::to("kits/show/$id");
 	}
 
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
+	public function destroy($id) {
 		if (Auth::user()->permission_id != 2) {
 			Session::flash("message", "You must be admin to do that!");
 			return Redirect::to("kits/");
