@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder {
 
 		//Random
 		$this->call('UserTableSeeder');
-		$this->call('ItemTableSeeder');
+		$this->call('KitTypeSeeder');
 		$this->call('KitTableSeeder');
+		$this->call('ItemTableSeeder');
 		$this->call('BookingTableSeeder');
 	}
 }
