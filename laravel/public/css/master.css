@@ -26,7 +26,7 @@ form {
 	line-height: 2em;
 }
 
-input[type=submit] {
+input[type=submit], input[type=button] {
 	background: #3498db;
 	background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
 	background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -40,11 +40,11 @@ input[type=submit] {
 	font-size: 14px;
 	font-weight:bold;
 	padding: 5px 5px 5px 5px;
-	text-decoration: none;  
+	text-decoration: none;
 	text-transform: uppercase;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, input[type=button]:hover	 {
 	background: #3cb0fd;
 	background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
 	background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
@@ -54,9 +54,9 @@ input[type=submit]:hover {
 	text-decoration: none;
 }
 
-Input[Type=text], Input[Type=password] {
+Input[Type=text], Input[Type=password], Input[Type=date], select {
 	width: 200px;
-	height: 20px;
+	height: 25px;
 	border: solid 2px #00E3E3;
 	padding: 2px;
 	border-radius: 5px;
@@ -139,7 +139,7 @@ label {
 
 #menuItem1  {
 	background-color: #ffb33a;
-}   
+}
 
 
 #menuItem2  {
