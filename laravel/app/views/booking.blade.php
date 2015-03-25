@@ -100,9 +100,8 @@
     </div><div>
         <input type="hidden" id="users" name="users" value=",">
         {{ Form::label('name', 'Name:') }}
-        <!--Remove line break?-->
         <ul id="names" style="list-style-type:none;padding-left:136px">
-            <li>
+            <li style="margin-left:0px;">
                 <?php
                     $users = array();
                     foreach(User::whereRaw("id is not ? and branch_id = ?", array(Auth::User()->id, [Auth::User()->branch_id]))->get() as $user){
