@@ -10,26 +10,26 @@
 		{{ HTML::style("css/master.css") }}
 	</head>
 	<body>
-		<div id ="user">
-			@if(Auth::check())
-				Welcome back, {{{ Auth::user()->getName() }}} | <a href="/logout">Logout</a>
-			@else
-				You are not logged in.
-			@endif
-		</div>
-
+		
 		<div id="container">
 			<div id="banner">
 				<a href="/"><span id="logo">
 					KIT-MTS
 				</span></a>
 				<ul id="menu">
-					<a href="{{ url("/booking") }}" id="menuItem1" ><li>Book a kit</li></a>
-					<a href="{{ url("/kits") }}" id="menuItem2" ><li>View kits</li></a>
-					<a href="{{ url("/summary") }}" id="menuItem3" ><li>Summary</li></a>
-					<a href="#" id="menuItem4" ><li>Help</li></a>
-					<a href="#" id="menuItem5" ><li>Account</li></a>
+					<a href="{{ url("/booking") }}" id="menuItem1" ><li>Book a Kit</li></a>
+					<a href="{{ url("/kits") }}" id="menuItem2" ><li>View Kits</li></a>
+					<a href="{{ url("/summary") }}" id="menuItem3" ><li>Bookings</li></a>
+					<a href="#" id="menuItem4" ><li>_</li></a>
+					<a href="#" id="menuItem5" ><li>_</li></a>
 				</ul>
+			</div>
+			<div id ="user">
+				@if(Auth::check())
+					Welcome back, {{{ Auth::user()->getName() }}} | <a href="/logout">Logout</a>
+				@else
+					You are not logged in.
+				@endif
 			</div>
 			<br style="clear:both;">
 
