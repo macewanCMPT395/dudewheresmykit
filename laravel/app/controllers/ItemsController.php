@@ -138,10 +138,5 @@ class ItemsController extends \BaseController {
 		Item::destroy($id);
 		Session::flash("message", "Item Deleted");
 		return Redirect::to("kits/show/$item->kit_id");
-
 	}
-
 }
-
-?>
-

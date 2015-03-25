@@ -6,9 +6,9 @@
 	@endif
 	<div id="types"> 
 		| <a href="{{{ url("kits") }}}"> All </a> | 
-	@foreach($types as $type) 
-		| <a href="{{{ url("kits/" . $type->id) }}}">{{{ $type->name }}}</a> |
-	@endforeach
+		@foreach($types as $type) 
+			| <a href="{{{ url("kits/" . $type->id) }}}">{{{ $type->name }}}</a> |
+		@endforeach
 	</div>
 
 	@foreach($kits as $kit)
@@ -23,9 +23,9 @@
 				<p>{{{ $kit->description }}}</p>
 				<p><b>Bookings:</b></p>
 				@foreach($kit->currentBookings as $booking) 
-				<ul>
-					<li>{{{ substr($booking->start_date,0,10) }}} till {{{ substr($booking->end_date,0,10) }}}</li>
-				</ul>
+					<ul>
+						<li>{{{ substr($booking->start_date,0,10) }}} till {{{ substr($booking->end_date,0,10) }}}</li>
+					</ul>
 				@endforeach
 				<p><b>Kit Contains:</b></p>
 				<ul>
@@ -52,4 +52,3 @@
 		</div>
 	@endforeach
 @stop
-

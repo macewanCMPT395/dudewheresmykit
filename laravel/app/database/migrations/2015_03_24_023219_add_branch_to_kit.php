@@ -10,8 +10,7 @@ class AddBranchToKit extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
+	public function up() {
 		Schema::table('Kits', function(Blueprint $table) {
 			$table->integer('branch_id')->nullable();
 			$table->foreign('branch_id')->references('id')->on('Branches');
@@ -23,8 +22,7 @@ class AddBranchToKit extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
+	public function down() {
 		Schema::table('Kits', function(Blueprint $table) {
 			$table->dropColumn('branch_id');
 			$table->dropForeign('branch_id_foreign');

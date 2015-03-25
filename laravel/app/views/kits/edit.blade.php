@@ -5,32 +5,32 @@
 
 	{{ Form::model($kit, array('url' => "kits/update/$kit->id")) }}
 
-	{{ Form::label('code', 'Barcode') }}	
-	{{ Form::text('code') }}
-	
-	<br>
+		{{ Form::label('code', 'Barcode') }}	
+		{{ Form::text('code') }}
+		
+		<br>
 
-	{{ Form::label('type_id', 'Type of Kit') }}	
-	{{ Form::select('type_id', $types) }}
+		{{ Form::label('type_id', 'Type of Kit') }}	
+		{{ Form::select('type_id', $types) }}
 
-	<br>
+		<br>
 
-	{{ Form::label('branch_id', "Current Branch") }}
-	{{ Form::select('branch_id', $branches) }} 
+		{{ Form::label('branch_id', "Current Branch") }}
+		{{ Form::select('branch_id', $branches) }} 
 
-	<br>
-	
-	{{ Form::label('description', 'Description') }}
-	{{ Form::textarea('description') }}
+		<br>
+		
+		{{ Form::label('description', 'Description') }}
+		{{ Form::textarea('description') }}
 
-	<br>
+		<br>
 
-	{{ Form::label('note', "Note") }}
-	{{ Form::textarea('note') }}
-	
-	<br>
-	
-	{{ Form::submit("Submit") }}
+		{{ Form::label('note', "Note") }}
+		{{ Form::textarea('note') }}
+		
+		<br>
+		
+		{{ Form::submit("Submit") }}
 	{{ Form::close() }}
 	
 	<br><br><br>
