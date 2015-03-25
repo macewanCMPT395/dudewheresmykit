@@ -33,8 +33,27 @@ class BookingsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-    {
+	public function store() {
+
+        $startDate = Input::get('start_date');
+        $endDate = Input::get('end_date');
+        $kit = Input::get('kit_id');
+        $users = Input::get('users');
+        $users = explode (',', $users);
+        array_shift($users);
+        array_pop($users);
+        array_push($users, Auth::User()->id);
+        $destBranch = Auth::User()->branch_id;
+        
+        Booking::create(array(
+            'destination_branch_id' => $destBranch,
+		    'user_ids' => serialize($users),
+            'start_date' => $startDate,
+            'end_date' => $endDate,
+		    'kit_id' => $kit,
+	));
+    
+    
         $email = "david.brookwell@shaw.ca";
         $mail =  explode( ',' , $email );
         
@@ -47,7 +66,7 @@ class BookingsController extends \BaseController {
             }
 
         });
-	       
+        return Redirect::to ('/summary');     
     }
 	/**
 	 * Display the specified resource.
