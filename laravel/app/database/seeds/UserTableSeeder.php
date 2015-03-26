@@ -42,7 +42,8 @@ class UserTableSeeder extends Seeder {
 
 		//200 users
 		for($i = 0; $i < 200; ++$i){
-			$name = explode(' ', $faker->unique->name);
+			$name1 = $faker->unique->name;
+			$name = explode(' ', $name1);
 			if((strpos($name[0], '.') != -1) && count($name) > 2){ //Dr. Mr. ... etc
 				$name[0] = $name[1];
 				$name[1] = $name[2];
@@ -50,7 +51,7 @@ class UserTableSeeder extends Seeder {
 			User::create(array(
 				'first_name' => $name[0],
 				'last_name' => $name[1],
-				'email' => "randomtestmailer+" . $name[1] . $name[0] . "@gmail.com",
+				'email' => "randomtestmailer+" . $name1 . "@gmail.com",
 				'password' => Hash::make($faker->word),
 				'phone' => $faker->phoneNumber,
 				'permission_id' => 0,
@@ -60,7 +61,8 @@ class UserTableSeeder extends Seeder {
 		}
 		//2 Managers
 		for($i = 0; $i < 2; ++$i){
-			$name = explode(' ', $faker->unique->name);
+			$name1 = $faker->unique->name;
+			$name = explode(' ', $name1);
 			if((strpos($name[0], '.') != -1) && count($name) > 2){
 				$name[0] = $name[1];
 				$name[1] = $name[2];
@@ -68,7 +70,7 @@ class UserTableSeeder extends Seeder {
 			User::create(array(
 				'first_name' => $name[0],
 				'last_name' => $name[1],
-				'email' => "randomtestmailer+" . $name[1] . $name[0] . "@gmail.com",
+				'email' => "randomtestmailer+" . $name1 . "@gmail.com",
 				'password' => Hash::make($faker->word),
 				'phone' => $faker->phoneNumber,
 				'permission_id' => 1,
