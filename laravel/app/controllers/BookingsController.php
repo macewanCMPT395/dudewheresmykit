@@ -50,7 +50,8 @@ class BookingsController extends \BaseController {
 	}
 
 	public function show($id) {
-		//
+		$data = array('title' => "Create Booking", 'kitId' => $id);
+		return View::make('booking')->with($data);
 	}
 
 	public function edit($id) {
