@@ -20,7 +20,7 @@
 					<a href="{{ url("/booking") }}" id="menuItem1" ><li>Book a Kit</li></a>
 					<a href="{{ url("/kits") }}" id="menuItem2" ><li>View Kits</li></a>
 					<a href="{{ url("/summary") }}" id="menuItem3" ><li>Bookings</li></a>
-					<a href="#" id="menuItem4" ><li>_</li></a>
+					<a href="#" id="menuItem4" ><li>Transfers</li></a>
 					<a href="#" id="menuItem5" ><li>_</li></a>
 				</ul>
 			</div>
@@ -63,7 +63,8 @@
 				</div>
 			@else
 				<div id="side">
-					<h1>Summary</h1>
+					<a href="{{ URL::previous() }}"><input type="button" value="Go Back" style="width:200px; margin-bottom:15px;"></a>
+					<h1 style="border-top:1px solid black; padding-top:10px;">Summary</h1>
 					@yield ('sidebar')
 				</div>
 
