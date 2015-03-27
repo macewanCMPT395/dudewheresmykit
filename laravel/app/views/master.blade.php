@@ -19,8 +19,8 @@
 				<ul id="menu">
 					<a href="{{ url("/booking") }}" id="menuItem1" ><li>Book a Kit</li></a>
 					<a href="{{ url("/kits") }}" id="menuItem2" ><li>View Kits</li></a>
-					<a href="{{ url("/summary") }}" id="menuItem3" ><li>Bookings</li></a>
-					<a href="#" id="menuItem4" ><li>_</li></a>
+					<a href="{{ url("/summary/mybookings") }}" id="menuItem3" ><li>Bookings</li></a>
+					<a href="{{ url("/summary/branchbookings") }}" id="menuItem4" ><li>_</li></a>
 					<a href="#" id="menuItem5" ><li>_</li></a>
 				</ul>
 			</div>

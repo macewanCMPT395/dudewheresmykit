@@ -7,8 +7,9 @@ class SummaryController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index() {
+	public function myBookings() {
 		$id = Auth::user()->id;
+
 		$results = Booking::join('Kits', 'Kits.id', '=', 'Bookings.id')
 			->whereRaw('user_ids = '.$id.' AND start_date >= DATE()', array())
 			->get();
@@ -17,6 +18,18 @@ class SummaryController extends \BaseController {
 			'single' => true,
 			'results' => $results
 		);
-		return View::make('summary')->with($data);
+		return View::make('summary/mybookings')->with($data);
+	}
+
+	public function branchBookings() {
+		$results = Booking::join('Kits', 'Kits.id', '=', 'Bookings.id')
+			->whereRaw('start_date >= DATE()', array())
+			->get();
+		$data = array (
+			'title' => "Summary",
+			'single' => true,
+			'results' => $results
+		);
+		return View::make('summary/branchbookings')->with($data);
 	}
 }

@@ -4,7 +4,8 @@ Route::group(['before' => 'auth'], function() {
 		return View::make('hello');
 	});
 	Route::resource('booking','BookingsController');
-	Route::get('summary','SummaryController@index');
+	Route::get('summary/mybookings','SummaryController@myBookings');
+	Route::get('summary/branchbookings', 'SummaryController@branchBookings');
 	Route::get("/items/create/{id}", 'ItemsController@create');
 	Route::post("/items/store/{id}", 'ItemsController@store');
 	Route::get("/items/report/{id}", 'ItemsController@report');
