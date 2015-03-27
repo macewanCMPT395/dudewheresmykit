@@ -6,7 +6,7 @@
 	{{ Form::open(array('url' => 'kits/store')) }}
 
 		{{ Form::label('code', 'Barcode') }}	
-		{{ Form::text('code') }}
+		{{ Form::text('code', '31221') }}
 		
 		<br>
 
