@@ -134,6 +134,7 @@
                 array_push($kits, $kit->description . '::' . $kit->id);
             }
             asort($kits);
+<<<<<<< HEAD
             $str = '<select name="kit" id="kit"><option value="-1">Pick a kit</option>';
             foreach($kits as $kit){
                 $arr = explode('::', $kit);
@@ -142,6 +143,20 @@
             echo $str . '</select> or ';
         ?>
         <input type="button" value="Find One!" onclick="/kits">
+=======
+            $kitid = isset($kitId) ? $kitId : -1;
+            $str = '<select name="kit" id="kit"><option value="-1">Pick a kit</option>';
+            foreach($kits as $kit){
+                $arr = explode('::', $kit);
+                $selected = "";
+                if($kitid == $arr[1])
+                    $selected = "selected";
+                $str .= "<option $selected value=\"$arr[1]\">$arr[0]</option>";
+            }
+            echo $str . "</select> or ";
+        ?>
+        <input type="button" value="Find One!" onclick="window.location = '/kits'">
+>>>>>>> upstream/master
     </div><div>
         <input type="submit" onsubmit="return 0;">
     </div>
