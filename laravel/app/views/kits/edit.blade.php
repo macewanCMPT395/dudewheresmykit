@@ -31,8 +31,8 @@
 		<br>
 		
 		{{ Form::submit("Submit") }}
+		<a href="{{ url("kits/destroy/$kit->id") }}" onclick="return confirm('Are you sure you want to delete kit {{ $kit->code }}?')"><input type="button" value="Delete Kit" id="destructive"></a>
+
 	{{ Form::close() }}
 	
-	<br><br><br>
-	<a href="{{ url("kits/destroy/$kit->id") }}" onclick="return confirm('Are you sure you want to delete kit {{ $kit->code }}?')"><input type="button" value="Delete kit"></a>
-@stop
+	@stop

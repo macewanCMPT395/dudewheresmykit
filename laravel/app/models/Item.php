@@ -5,7 +5,7 @@ class Item extends Eloquent {
 
 	public static function validate($input, $edit=false) {
 		$rules = array(
-			"asset_tag" => "Required",
+			"asset_tag" => "Required|Digits:6",
 			"name" => "Required"
 		);
 
