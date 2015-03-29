@@ -11,4 +11,8 @@ class Booking extends Eloquent {
 	public function destination() {
 		return $this->belongsTo('Branch', 'destination_branch_id');
 	}
+
+	public function users() {
+		return $this->belongsToMany('User', 'User_Booking', 'booking_id','user_id');
+	}
 }

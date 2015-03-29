@@ -25,13 +25,14 @@ class BookingsController extends \BaseController {
 		$destBranch = Auth::User()->branch_id;
 
 
-		Booking::create(array(
+		$booking = Booking::create(array(
 			'destination_branch_id' => $destBranch,
-			'user_ids' => serialize($users),
 			'start_date' => $startDate,
 			'end_date' => $endDate,
 			'kit_id' => $kit,
 		));
+
+		$booking->users()->attach($users);
 
 
 		$email = "david.brookwell@shaw.ca";
