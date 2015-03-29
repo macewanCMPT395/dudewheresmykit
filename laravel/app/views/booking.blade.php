@@ -1,41 +1,43 @@
 @extends ('master')
+<style type="text/css">
+.AddedUser {
+    display:none;
+}
+</style>
 <script type="text/javascript">
     function addUser(){
         var userAdd = document.getElementById('userAdd');
         var option = userAdd.options[userAdd.selectedIndex];
         if(option.value == -1){alert('Please select a user'); return false;}
         var elem = document.createElement('li');
+        elem.setAttribute("style", "margin-left:0;");
         elem.id = option.value;
         elem.name = userAdd.options[userAdd.selectedIndex].text;
-        elem.innerHTML = '<label style="width:200px;">' + elem.name + '</label><input style="margin-left:5px;" type="button" value="Remove" onclick="return removeUser(' + option.value + ');">';
-
+        elem.innerHTML = '<label style="width:200px;padding-right:4px">' + elem.name + '</label><input type="button" value="Remove" onclick="return removeUser(' + option.value + ');">';
+        option.className = "AddedUser";
         var parent = document.getElementById("names");
         parent.insertBefore(elem, parent.children[parent.children.length - 1]);
-        userAdd.remove(userAdd.selectedIndex);
-
         document.getElementById("users").value += elem.id + ",";
+        userAdd.selectedIndex = 0;
     }
     function removeUser(id){
-        var elem = document.createElement('option');
         var user = document.getElementById(id);
-        elem.value = user.id;
-        elem.text = user.name;
         user.parentNode.removeChild(user);
-        var userAdd = document.getElementById('userAdd');
 
-        var input = document.getElementById("users");
-        var index = input.value.indexOf(',' + elem.value + ',') + 1;
-        input.value = input.value.substring(0, index) + input.value.substring(index + 1 + elem.value.length);
-
-        for(var i = 1; i < userAdd.options.length; ++i){
-            if(elem.text < userAdd.options[i].text){
-                userAdd.add(elem, userAdd.options[i]);
-                return;
+        var addedUsers = document.getElementsByClassName("AddedUser");
+        for (var i = addedUsers.length - 1; i >= 0; i--) {
+            if(addedUsers[i].value == user.id){
+                addedUsers[i].className = "";
+                break;
             }
-        }
-        userAdd.add(elem);
+        };
     }
-
+    function fixUserList(check){
+        var elems = document.getElementsByName("OtherBranch");
+        for (var i = elems.length - 1; i >= 0; i--) {
+            elems[i].style.display = check.checked ? "" : "none";
+        }
+    }
     function getHTMLDate(date){
         var d = date.getDate();
         var m = date.getMonth() + 1;
@@ -95,27 +97,36 @@
 <div id = "form">
     {{ Form::open(array('route' => 'booking.store', 'onsubmit' => 'return checkValid();')) }}
     <div>
-        {{ Form::label('name', 'Owner:') }}
+        {{ Form::label('name', 'Creator:') }}
         {{ Form::label('name', Auth::User()->getName()) }}
     </div><div>
         <input type="hidden" id="users" name="users" value=",">
-        {{ Form::label('name', 'Name:') }}
-        <ul id="names" style="list-style-type:none;padding-left:136px">
+        <label for="name" style="vertical-align:top;">Additional:</label>
+        <ul id="names" style="list-style-type:none;display:inline-block;">
             <li style="margin-left:0px;">
                 <?php
-                    $users = array();
-                    foreach(User::whereRaw("id is not ? and branch_id = ?", array(Auth::User()->id, [Auth::User()->branch_id]))->get() as $user){
-                        array_push($users, $user->getName() . ":" . $user->id);
+                    function getSortedBranch($branch_id){
+                        $users = array();
+                        foreach(User::whereRaw("id is not ? and branch_id = ?", array(Auth::User()->id, $branch_id))->get() as $user){
+                            array_push($users, $user->getName() . ":" . $user->id);
+                        }
+                        asort($users);
+                        return $users;
                     }
-                    asort($users);
+                    $main_branch=Auth::User()->branch_id;
                     $str = '<select id="userAdd"><option value="-1">Add another user</option>';
-                    foreach($users as $user){
-                        $arr = explode(':', $user);
-                        $str .= "<option value=\"$arr[1]\">$arr[0]</option>";
+                    foreach (Branch::all() as $branch) {
+                        $name = $branch->id == $main_branch ? "name=\"MainBranch\"" : "name=\"OtherBranch\" style=\"display:none;\"";
+                        $str .= "<option id=\"userAdd$branch->id\" name=\"OtherBranch\" style=\"display:none;\" value=\"-1\">==$branch->code - $branch->name==</option>";
+                        foreach(getSortedBranch($branch->id) as $user){
+                            $arr = explode(':', $user);
+                            $str .= "<option $name value=\"$arr[1]\">$arr[0]</option>";
+                        }
                     }
                     echo $str . '</select>';
                 ?>
                 <input type="button" value="Add" onclick="return addUser();">
+                <input style="vertical-align:middle;" type="checkbox" id="branch_allow" onclick="fixUserList(this)"><span style="font-size:10px;"> Show Other Branches</span>
             </li>
         </ul>
     </div><div>
@@ -123,18 +134,21 @@
         <input name="startDate" id="startDate" type="date" value={{ date('Y-m-d', time() + 86400) }} onblur="checkValidDate(this)">
         <!-- ONLY WORKS ON Chrome && OPERA-->
     </div><div>
-        {{ Form::label ('end', 'End Date:') }}
+        {{ Form::label('end', 'End Date:') }}
         <input name="endDate" id="endDate" type="date" value={{ date('Y-m-d', time() + 86400) }} onblur="checkValidDate(this)">
         <!-- ONLY WORKS ON Chrome && OPERA-->
     </div><div>
-        {{ Form::label ('kitID', 'Kit ID:') }}
+        {{ Form::label('event', 'Event:') }}
+        {{ Form::text('event') }}
+    </div><div>
+        {{ Form::label('Kit Type', 'Kit Type:') }}
         <?php
             $kits = array();
-            foreach(Kit::all() as $kit){
-                array_push($kits, $kit->description . '::' . $kit->id);
+            foreach(KitType::all() as $kit){
+                array_push($kits, $kit->name . '::' . $kit->id);
             }
             asort($kits);
-            $kitid = isset($kitId) ? $kitId : -1;
+            $kitid = isset($kitId) ? Kit::find($kitId)->type_id : -1;
             $str = '<select name="kit" id="kit"><option value="-1">Pick a kit</option>';
             foreach($kits as $kit){
                 $arr = explode('::', $kit);
@@ -146,8 +160,8 @@
             echo $str . "</select> or ";
         ?>
         <input type="button" value="Find One!" onclick="window.location = '/kits'">
-    </div><div>
-        <input type="submit" onsubmit="return 0;">
+    </div><div style="width:100%;">
+        <input type="submit" onsubmit="return 0;" style="width:100px;left:50%;position:relative;margin-top:1em;margin-bottom:0.5em;margin-left:-50px">
     </div>
     {{Form::close()}}
 </div>
