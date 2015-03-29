@@ -6,13 +6,13 @@
 		{{ HTML::style("css/master.css") }}
 	</head>
 	<body> 
-		<div id="container" style="width:400px; margin-top:300px; font-size:22px;">
+		<div id="container" style="width:400px; margin-top:10%; font-size:22px;">
 			<div id="content">
-			{{ HTML::image('img/logo.png') }}
-					<h1>KIT-MTS Login</h1>
-					@if(Session::has('badlogin'))
-						<p style="font-weight:bold;">Invalid username and/or password.</p>
-					@endif
+				{{ HTML::image('img/logo.png') }}
+				<h1>KIT-MTS Login</h1>
+				@if(Session::has('badlogin'))
+					<p style="font-weight:bold;">Invalid username and/or password.</p>
+				@endif
 				{{ Form::open(array('post' => 'login'))}}
 					<div>
 						{{ Form::label('email', 'Email') }}

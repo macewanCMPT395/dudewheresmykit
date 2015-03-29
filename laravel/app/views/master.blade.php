@@ -19,10 +19,13 @@
 				<ul id="menu">
 					<a href="{{ url("/booking") }}" id="menuItem1" ><li>Book a Kit</li></a>
 					<a href="{{ url("/kits") }}" id="menuItem2" ><li>View Kits</li></a>
-					<a href="{{ url("/summary") }}" id="menuItem3" ><li>Bookings</li></a>
-					<a href="#" id="menuItem4" ><li>_</li></a>
-					<a href="#" id="menuItem5" ><li>_</li></a>
+					<a href="{{ url("/summary") }}" id="menuItem3" ><li>Your Bookings</li></a>
+					<a href="#" id="menuItem4" ><li>Branch</li></a>
+					<a href="#" id="menuItem5" ><li>Transfer</li></a>
 				</ul>
+			</div>
+			<div id="back">	
+				<a href="{{ URL::previous() }}"><input type="button" value="Go Back" style="width:200px; float:left; margin-bottom:15px;"></a>
 			</div>
 			<div id ="user">
 				@if(Auth::check())
@@ -47,40 +50,20 @@
 					<p>{{ Session::get('message') }}</p>
 				</div>
 			@endif
-			@if(isset($single))
-				<div id="single">
-					<div id="content">	
-					<h1>
-						@if(isset($title))
-							{{{ $title }}}
-						@else
-							Default
-						@endif
-					</h1>
+			<div id="single">
+				<div id="content">	
+				<h1>
+					@if(isset($title))
+						{{{ $title }}}
+					@else
+						Default
+					@endif
+				</h1>
 
-						@yield('content')
-					</div>
+					@yield('content')
 				</div>
-			@else
-				<div id="side">
-					<h1>Summary</h1>
-					@yield ('sidebar')
-				</div>
-
-				<div id="main">
-					<h1>
-						@if(isset($title))
-							{{{ $title }}}
-						@else
-							Default
-						@endif
-					</h1>
-					<div id="content">
-						@yield('content')
-					</div>
-				</div>
-				<br style="clear:both;">
-			@endif
+			</div>
+			<br style="clear:both;">
 		</div>
 	</body>
 </html>
