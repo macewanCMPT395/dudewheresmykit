@@ -26,5 +26,6 @@
 		<br>
 		
 		{{ Form::submit("Submit") }}
+		<a href="{{ url("items/destroy/$item->id") }}" onclick="return confirm('Are you sure you want to delete item {{ $item->asset_tag }}?')"><input type="button" value="Delete Item" id="destructive"></a>
 	{{ Form::close() }}
 @stop

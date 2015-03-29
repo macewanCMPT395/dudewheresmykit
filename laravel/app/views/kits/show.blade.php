@@ -24,15 +24,15 @@
 	<table>
 		<tr>
 			<th style="width:90px;">Item #</th>
-			<th style="width:100px;">Name</th>
-			<th style="width:100px;">Note</th>
+			<th style="width:300px;">Name</th>
+			<th style="width:200px;">Note</th>
 			<th style="width:100px;">Controls</th>
 		</tr>
 		@foreach($kit->items as $item) 
 			<tr>
 				<td style="width:90px;"><b>{{{ $item->asset_tag }}}</b></td>
-				<td style="width:100px;"><b>{{{ $item->name }}}</b></td>
-				<td style="width:100px;">{{{ $item->note }}}</td> 
+				<td style="width:300px;"><b>{{{ $item->name }}}</b></td>
+				<td style="width:200px;">{{{ $item->note }}}</td> 
 				<td style="width:100px;"><a href="{{{ url("/items/report/$item->id") }}}">Report Problem</a> 
 					@if(Auth::user()->permission_id >= 2) 
 						<br><a href="{{{ url("/items/edit/$item->id") }}}">Edit Item</a>
@@ -57,7 +57,7 @@
 		@if(Auth::user()->permission_id >= 2)
 			<a href="{{{ url("kits/edit/$kit->id") }}}"><input type="button" value="Edit kit"></a>
 			<a href="{{{ url("items/create/$kit->id") }}}"><input type="button" value="Add item"></a>
-			<a href="{{{ url("kits/destroy/$kit->id") }}}" onclick="return confirm('Are you sure you want to delete kit {{{ $kit->code }}}?')"><input type="button" value="Delete kit"></a>
+			<a href="{{{ url("kits/destroy/$kit->id") }}}" onclick="return confirm('Are you sure you want to delete kit {{{ $kit->code }}}?')"><input type="button" value="Delete kit" id="destructive"></a>
 		@endif
 	</div>
 @stop

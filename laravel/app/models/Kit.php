@@ -24,7 +24,7 @@ class Kit extends Eloquent {
 
 	public static function validate($input, $edit=false) {
 		$rules = array(
-			"code" => "Required",
+			"code" => "Required|Digits:14",
 			"branch_id" => "Required",
 			"type_id" => "Required",
 		);
