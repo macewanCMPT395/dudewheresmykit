@@ -9,18 +9,22 @@ class BookingTableSeeder extends Seeder {
 		for($i = 0; $i < 25; ++$i){
 			$startDay = $faker->dateTimeBetween($startDate = 'now', $endDate = '+30 years');
 			$endDay = $faker->dateTimeBetween($startDate = $startDay, $endDate = '+31 years');
-			$users = array();
-			for($j = $faker->randomDigitNotNull; $j >= 0; --$j){
-				array_push($users, $faker->numberBetween(1, $maxUser));
-			}
-			Booking::create(array(
-				'user_ids' => serialize($users),
+			$booking = Booking::create(array(
 				'destination_branch_id' => $faker->numberBetween(1, $maxBranch),
 				'kit_id' => $faker->numberBetween(1, $maxKit),
 				'start_date' => $startDay,
 				'end_date' => $endDay
 			));
-		}
 
+			// Get random user ids to attach.
+			$users = array();
+			for ($j = 0; $j < 4; $j++) {
+				$number = $faker->numberBetween(1, $maxUser);
+				if (!in_array($number, $users)) { 
+					array_push($users, $number);
+				}
+			}
+			$booking->users()->attach($users);
+		}
 	}
 }
