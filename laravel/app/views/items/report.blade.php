@@ -4,7 +4,7 @@
 
 	{{ Form::open(array('url' => "items/update/$item->id")) }}
 
-		{{ Form::label('note', "Note:") }}
+		<p>What is the problem with item {{{ $item->name }}} ({{{ $item->asset_tag }}})?</p>
 		{{ Form::textarea('note') }} 
 		
 		<br>

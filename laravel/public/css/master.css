@@ -72,6 +72,27 @@ Input[Type=text], Input[Type=password], Input[Type=date], select, option {
 	color: #474747;
 }
 
+#destructive {
+	float:right;
+	background: #d93434;
+	background-image: -webkit-linear-gradient(top, #d93434, #360405);
+	background-image: -moz-linear-gradient(top, #d93434, #360405);
+	background-image: -ms-linear-gradient(top, #d93434, #360405);
+	background-image: -o-linear-gradient(top, #d93434, #360405);
+	background-image: linear-gradient(to bottom, #d93434, #360405);  
+}
+
+#destructive:hover {
+	background: #000000;
+	background-image: -webkit-linear-gradient(top, #000000, #0d0d0d);
+	background-image: -moz-linear-gradient(top, #000000, #0d0d0d);
+	background-image: -ms-linear-gradient(top, #000000, #0d0d0d);
+	background-image: -o-linear-gradient(top, #000000, #0d0d0d);
+	background-image: linear-gradient(to bottom, #000000, #0d0d0d);
+	text-decoration: none;
+
+}
+
 Input[Type=text]:hover, Input[Type=password]:hover, select:hover, option:hover  {
 	border: 2px solid #FF00D5;
 }
@@ -97,6 +118,7 @@ label {
 }
 
 #logo {
+	width:150px;
 	font-size:42px;
 	font-weight:bold;
 	margin-left:20px;
@@ -122,7 +144,8 @@ label {
 #types {
 	text-align:center;
 	padding: 10px 10px 10px 10px;
-	background-color:#53e2ff;
+	font-size:18px;
+	background-color:#ADD8E6;
 
 }
 
@@ -177,6 +200,14 @@ label {
 	float:right;
 	margin-top:15px;
 	margin-right:15px;
+	margin-bottom:15px;
+}
+
+#back {
+	float:left;
+	margin-top:10px;
+	margin-bottom:15px;
+	margin-left:10px;
 }
 
 #single {
@@ -198,8 +229,8 @@ label {
 	margin-left:auto;
 	margin-right:auto;
 	color: #000;
-	background-color:#aaaa00;
-	border: 1px solid black;
+	border: 3px solid green;
+	font-weight:bold;
 }
 
 #error {
@@ -236,25 +267,26 @@ h1 {
 	border-radius: 1px;
 }
 
-#summary-table {
-	overflow-y: auto;
-}
-
-#summary-table table, th, td {
+table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 }
 
-#summary-table th, td {
+th {
+	background-color:#eee;
+}
+
+th, td {
 	padding: 5px;
 	text-align: left;
 }
 
-#summary-table table {
+table {
 	width: 100%;
 }
 
 .kit {
+	line-height:1.4em;
 	border: 1px solid #000;
 	padding: 10px 10px 10px 10px;
 	margin: 10px 10px 10px 10px;

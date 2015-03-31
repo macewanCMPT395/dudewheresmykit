@@ -5,7 +5,7 @@
 
 	{{ Form::open(array('url' => "items/store/$kit->id")) }}
 		{{ Form::label('asset_tag', 'Asset Tag') }}	
-		{{ Form::text('asset_tag', '31221' ) }}
+		{{ Form::text('asset_tag', '' ) }}
 		
 		<br>
 

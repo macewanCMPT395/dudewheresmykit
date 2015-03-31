@@ -11,12 +11,12 @@ class BookingTableSeeder extends Seeder {
 			$endDay = $faker->dateTimeBetween($startDate = $startDay, $endDate = '+31 years');
 			$users = array();
 			for($j = $faker->randomDigitNotNull; $j >= 0; --$j){
-				array_push($users, $faker->numberBetween(0, $maxUser));
+				array_push($users, $faker->numberBetween(1, $maxUser));
 			}
 			Booking::create(array(
 				'user_ids' => serialize($users),
-				'destination_branch_id' => $faker->numberBetween(0, $maxBranch),
-				'kit_id' => $faker->numberBetween(0, $maxKit),
+				'destination_branch_id' => $faker->numberBetween(1, $maxBranch),
+				'kit_id' => $faker->numberBetween(1, $maxKit),
 				'start_date' => $startDay,
 				'end_date' => $endDay
 			));

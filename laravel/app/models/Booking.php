@@ -5,8 +5,9 @@ class Booking extends Eloquent {
 
 	public function item() {
 		return $this->belongsTo('Kit');
-	}	
-	
-	protected $fillable = array('destination_branch_id', 'user_ids', 'start_date', 'end_date', 'kit_id');
-   
+	}   
+
+	public function destination() {
+		return $this->belongsTo('Branch', 'destination_branch_id');
+	}
 }
