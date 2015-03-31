@@ -10,7 +10,7 @@ class SummaryController extends \BaseController {
 	public function myBookings() {
 		$id = Auth::user()->id;
 
-		$results = Booking::join('Kits', 'Kits.id', '=', 'Bookings.id')
+		$results = Booking::join('Kits', 'Kits.id', '=', 'Bookings.kit_id')
 			->whereRaw('user_ids = '.$id.' AND start_date >= DATE()', array())
 			->get();
 		$data = array (
@@ -22,7 +22,7 @@ class SummaryController extends \BaseController {
 	}
 
 	public function branchBookings() {
-		$results = Booking::join('Kits', 'Kits.id', '=', 'Bookings.id')
+		$results = Booking::join('Kits', 'Kits.id', '=', 'Bookings.kit_id')
 			->whereRaw('start_date >= DATE()', array())
 			->get();
 		$data = array (

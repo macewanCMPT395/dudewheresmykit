@@ -1,7 +1,6 @@
-@extends('master')
+@extends ('master')
 
-
-@section('content')
+@section ('content')
 
 	{{ Form::model($item, array('url' => "items/update/$item->id")) }}
 

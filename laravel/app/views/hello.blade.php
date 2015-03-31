@@ -1,6 +1,5 @@
-
 @extends ('master')
 
 @section ('content')
-    lorum ipsum
+    Welcome!
 @stop

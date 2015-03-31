@@ -1,6 +1,6 @@
-@extends('master')
+@extends ('master')
 
-@section('content')
+@section ('content')
 	@if(Auth::user()->permission_id >= 2) 
 		<a href="{{{ url("/kits/create") }}}"><h2 style="margin:5px 5px 5px 5px;">Add a kit</h2></a>
 	@endif
@@ -52,7 +52,7 @@
 					</ul>
 				</div>
 				<div class="kitButton">
-					<a href="{{{ url("booking/$kit->id") }}}"><input type="button" value="Book it!"></a>
+					<a href="{{{ url("booking/$kit->id") }}}"><input type="button" value="Book Kit"></a>
 					<a href="{{{ url("kits/report/$kit->id") }}}"><input type="button" value="Report problem"></a>
 					<a href="{{{ url("kits/show/$kit->id") }}}"><input type="button" value="Details"></a>
 					@if(Auth::user()->permission_id >= 2)

@@ -1,10 +1,10 @@
-@extends('master')
+@extends ('master')
 
-@section('content')
+@section ('content')
 
 	{{ Form::open(array('url' => "items/update/$item->id")) }}
 
-		<p>What is the problem with item {{{ $item->name }}} ({{{ $item->asset_tag }}})?</p>
+		<p>Please record any problems with item {{{ $item->name }}} ({{{ $item->asset_tag }}})?</p>
 		{{ Form::textarea('note') }} 
 		
 		<br>
