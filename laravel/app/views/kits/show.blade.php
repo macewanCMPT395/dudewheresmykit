@@ -1,6 +1,6 @@
-@extends("master")
+@extends ('master')
 
-@section('content')
+@section ('content')
 	@if($kit->note) 
 		<div class="kitNote">{{{ $kit->note }}}</div>
 	@endif

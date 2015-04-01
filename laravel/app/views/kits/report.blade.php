@@ -1,6 +1,6 @@
-@extends('master')
+@extends ('master')
 
-@section('content')
+@section ('content')
 
 	{{ Form::open(array('url' => "kits/update/$kit->id")) }}
 

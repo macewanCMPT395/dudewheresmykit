@@ -93,6 +93,7 @@
         return true;
     }
 </script>
+	
 @section ('content')
 <div id = "form">
     {{ Form::open(array('route' => 'booking.store', 'onsubmit' => 'return checkValid();')) }}
@@ -159,7 +160,9 @@
             }
             echo $str . "</select> or ";
         ?>
-        <input type="button" value="Find One!" onclick="window.location = '/kits'">
+        <input type="button" value="Find Kit" onclick="window.location = '/kits'">
+    </div><div>
+        <input type="submit" onsubmit="return 0;">
     </div><div style="width:100%;">
         <input type="submit" onsubmit="return 0;" style="width:100px;left:50%;position:relative;margin-top:1em;margin-bottom:0.5em;margin-left:-50px">
     </div>

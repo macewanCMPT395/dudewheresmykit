@@ -1,7 +1,6 @@
-@extends('master')
+@extends ('master')
 
-
-@section('content')
+@section ('content')
 
 	{{ Form::model($kit, array('url' => "kits/update/$kit->id")) }}
 

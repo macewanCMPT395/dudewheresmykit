@@ -1,7 +1,6 @@
-@extends('master')
+@extends ('master')
 
-
-@section('content')
+@section ('content')
 
 	{{ Form::open(array('url' => "items/store/$kit->id")) }}
 		{{ Form::label('asset_tag', 'Asset Tag') }}	

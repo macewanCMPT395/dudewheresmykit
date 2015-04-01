@@ -19,13 +19,13 @@
 				<ul id="menu">
 					<a href="{{ url("/booking") }}" id="menuItem1" ><li>Book a Kit</li></a>
 					<a href="{{ url("/kits") }}" id="menuItem2" ><li>View Kits</li></a>
-					<a href="{{ url("/summary") }}" id="menuItem3" ><li>Your Bookings</li></a>
-					<a href="#" id="menuItem4" ><li>Branch</li></a>
-					<a href="{{ url("/transfers") }}" id="menuItem5" ><li>Transfer</li></a>
+					<a href="{{ url("/summary/mybookings") }}" id="menuItem3" ><li>My Bookings</li></a>
+					<a href="{{ url("/summary/branchbookings") }}" id="menuItem4" ><li>Branch Bookings</li></a>
+					<a href="#" id="menuItem5" ><li>Transfers</li></a>
 				</ul>
 			</div>
 			<div id="back">	
-				<a href="{{ URL::previous() }}"><input type="button" value="Go Back" style="width:200px; float:left; margin-bottom:15px;"></a>
+				<a href="{{ URL::previous() }}"><input type="button" value="Previous Page" style="width:200px; float:left; margin-bottom:15px;"></a>
 			</div>
 			<div id ="user">
 				@if(Auth::check())
