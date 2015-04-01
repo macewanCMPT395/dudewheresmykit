@@ -24,7 +24,6 @@ class BookingsController extends \BaseController {
 		array_push($users, Auth::User()->id);
 		$destBranch = Auth::User()->branch_id;
 
-	
 		$booking = Booking::create(array(
 			'destination_branch_id' => $destBranch,
 			'start_date' => $startDate,
