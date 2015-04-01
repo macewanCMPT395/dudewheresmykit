@@ -13,6 +13,10 @@ class Kit extends Eloquent {
 		return $this->belongsTo('KitType');
 	}
 
+	public function branch() {
+		return $this->belongsTo('Branch');
+	}
+
 	public function bookings() {
 		return $this->hasMany('Booking');
 	}	

@@ -35,7 +35,8 @@ class UserTableSeeder extends Seeder {
 			'password' => Hash::make('admin'),
 			'phone' => '+1(555)555-5555',
 			'remember_token' => str_random(64),
-			'permission_id' => 2
+			'permission_id' => 2,
+			'branch_id' => 1
 		));
 
 		//

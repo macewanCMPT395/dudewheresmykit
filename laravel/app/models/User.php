@@ -14,4 +14,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function getName(){
 		return $this->first_name . " " . $this->last_name;
 	}
+
+	public function bookings() {
+		return $this->belongsToMany('Booking', 'User_Booking', 'user_id', 'booking_id');
+	}
+
+	public function currentBookings() {
+		return $this->bookings()->where('end_date', '<=', 'TIME()');
+	}
+
+	public function branch() {
+		return $this->belongsTo('Branch', 'branch_id'); 
+	}
 }

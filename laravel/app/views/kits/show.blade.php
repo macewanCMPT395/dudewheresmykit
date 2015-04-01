@@ -21,7 +21,7 @@
 		@endforeach
 	</table>
 	<p><b>Kit Contains:</b></p>
-	<table>
+	<table style="margin: 0 0 0 0;">
 		<tr>
 			<th style="width:90px;">Item #</th>
 			<th style="width:300px;">Name</th>
@@ -40,15 +40,15 @@
 					@endif
 				</td>
 			</tr>
-		</table>
-		<table>
-			<tr>	
-				<td style="width:100%;padding-top:20px;padding-bottom:20px;font-style:italic;">
-					{{{ $item->description }}} 	
-				</td>
-			</tr>
-		</table>
-		<table>
+			</table>
+			<table style="margin: 0 0 0 0;">
+				<tr>	
+					<td style="width:100%;padding-top:20px;padding-bottom:20px;font-style:italic;">
+						{{{ $item->description }}} 	
+					</td>
+				</tr>
+			</table>
+			<table style="margin:0 0 0 0;">
 		@endforeach
 	</table>
 

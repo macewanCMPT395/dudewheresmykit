@@ -4,7 +4,7 @@ Route::group(['before' => 'auth'], function() {
 		return View::make('hello');
 	});
 	Route::resource('booking','BookingsController');
-	Route::get('summary/mybookings','SummaryController@myBookings');
+	Route::get('summary/mybookings','SummaryController@index');
 	Route::get('summary/branchbookings', 'SummaryController@branchBookings');
 	Route::get("/items/create/{id}", 'ItemsController@create');
 	Route::post("/items/store/{id}", 'ItemsController@store');
@@ -22,6 +22,10 @@ Route::group(['before' => 'auth'], function() {
 	Route::get('/kits/create', 'KitsController@create');
 	Route::get('/kits/{id}','KitsController@type');
 	Route::get('/kits','KitsController@index');
+
+	Route::get('/transfers', 'TransferController@index');
+	Route::get('/transfers/ship/{id}', 'TransferController@ship');
+	Route::get('/transfers/receive/{id}', 'TransferController@receive');
 });
 
 Route::get('/login', function() {

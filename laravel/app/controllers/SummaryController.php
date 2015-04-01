@@ -7,15 +7,11 @@ class SummaryController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function myBookings() {
-		$id = Auth::user()->id;
-
-		$results = Booking::join('Kits', 'Kits.id', '=', 'Bookings.kit_id')
-			->whereRaw('user_ids = '.$id.' AND start_date >= DATE()', array())
-			->get();
+	public function index() {
+		$user = Auth::user();
+		$results = $user->currentBookings;
 		$data = array (
 			'title' => "Summary",
-			'single' => true,
 			'results' => $results
 		);
 		return View::make('summary/mybookings')->with($data);
