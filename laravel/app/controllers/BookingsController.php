@@ -30,6 +30,7 @@ class BookingsController extends \BaseController {
 			'start_date' => $startDate,
 			'end_date' => $endDate,
 			'kit_id' => $kit,
+			'status_id' => 3
 		));
 
 		$booking->users()->attach($users);

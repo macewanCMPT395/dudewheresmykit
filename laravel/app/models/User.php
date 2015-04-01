@@ -22,4 +22,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function currentBookings() {
 		return $this->bookings()->where('end_date', '<=', 'TIME()');
 	}
+
+	public function branch() {
+		return $this->belongsTo('Branch', 'branch_id'); 
+	}
 }

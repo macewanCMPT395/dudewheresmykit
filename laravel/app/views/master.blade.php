@@ -21,7 +21,7 @@
 					<a href="{{ url("/kits") }}" id="menuItem2" ><li>View Kits</li></a>
 					<a href="{{ url("/summary") }}" id="menuItem3" ><li>Your Bookings</li></a>
 					<a href="#" id="menuItem4" ><li>Branch</li></a>
-					<a href="#" id="menuItem5" ><li>Transfer</li></a>
+					<a href="{{ url("/transfers") }}" id="menuItem5" ><li>Transfer</li></a>
 				</ul>
 			</div>
 			<div id="back">	

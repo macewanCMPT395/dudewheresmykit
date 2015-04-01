@@ -21,6 +21,10 @@ Route::group(['before' => 'auth'], function() {
 	Route::get('/kits/create', 'KitsController@create');
 	Route::get('/kits/{id}','KitsController@type');
 	Route::get('/kits','KitsController@index');
+
+	Route::get('/transfers', 'TransferController@index');
+	Route::get('/transfers/ship/{id}', 'TransferController@ship');
+	Route::get('/transfers/receive/{id}', 'TransferController@receive');
 });
 
 Route::get('/login', function() {
