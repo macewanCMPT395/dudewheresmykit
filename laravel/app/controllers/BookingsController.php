@@ -34,13 +34,19 @@ class BookingsController extends \BaseController {
 		));
 
 		$booking->users()->attach($users);
-		
-		foreach ($users as $id) {
-			$user = User::find($id); 
+		try {
+			foreach ($users as $id) {
+				$user = User::find($id); 
 
-			Mail::send('emails.bookingEmail',array('name' => $user->getName(),'date' => $booking->start_date,'event' => $booking->event), function($message) use ($user){
-				$message->to($user->email)->subject('Booking Creation');
-			});
+				Mail::send('emails.bookingEmail',array('name' => $user->getName(),
+					'date' => $booking->start_date,'event' => $booking->event),
+					function($message) use ($user){
+					$message->to($user->email)->subject('Booking Creation');
+				});
+			}
+		}catch (Exception $e) {
+			Session::flash('errors', array('Invalid Email; Email not sent'));
+			return Redirect::to ('/summary');
 		}
 		return Redirect::to ('/summary');
 	}
