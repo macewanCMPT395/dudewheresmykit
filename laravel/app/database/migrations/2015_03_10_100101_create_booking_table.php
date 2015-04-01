@@ -15,6 +15,7 @@ class CreateBookingTable extends Migration {
             $table->increments('id');
             $table->integer('destination_branch_id');
             $table->integer('kit_id');
+            $table->string('event');
             $table->date('start_date');
             $table->date('end_date');
 			$table->timestamps();
