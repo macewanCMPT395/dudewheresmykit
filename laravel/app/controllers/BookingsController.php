@@ -17,37 +17,31 @@ class BookingsController extends \BaseController {
 		$endDate = Input::get('endDate');
 		$kit = Input::get('kit');
 		$users = Input::get('users');
+		$event = Input::get('event');
 		$users = explode (',', $users);
-		//$email = DB::table('users')->where('id' , '=' , "$users")->select('email')->get(); -- WIP line retained to work on in the next sprint.
 		array_shift($users);
 		array_pop($users);
 		array_push($users, Auth::User()->id);
 		$destBranch = Auth::User()->branch_id;
-
 
 		$booking = Booking::create(array(
 			'destination_branch_id' => $destBranch,
 			'start_date' => $startDate,
 			'end_date' => $endDate,
 			'kit_id' => $kit,
+			'event' => $event,
 			'status_id' => 3
 		));
 
 		$booking->users()->attach($users);
+		
+		foreach ($users as $id) {
+			$user = User::find($id); 
 
-
-		$email = "david.brookwell@shaw.ca";
-		$mail =  explode( ',' , $email );
-
-
-		Mail::send('emails.bookingEmail',[],function($message) use ($mail){
-
-			foreach ($mail as $recipient){
-
-				$message->to($recipient, 'Jdoe')->subject('Booking Creation');
-			}
-
-		});
+			Mail::send('emails.bookingEmail',array('name' => $user->getName(),'date' => $booking->start_date,'event' => $booking->event), function($message) use ($user){
+				$message->to($user->email)->subject('Booking Creation');
+			});
+		}
 		return Redirect::to ('/summary');
 	}
 
