@@ -22,7 +22,8 @@ class BookingTableSeeder extends Seeder {
 				'status_id' => $status_id,
 				'shipped' => $shipped,
 				'start_date' => $startDay,
-				'end_date' => $endDay
+				'end_date' => $endDay,
+				'event' => $faker->word
 			));
 
 			// Get random user ids to attach.
