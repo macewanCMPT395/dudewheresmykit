@@ -5,7 +5,6 @@ class KitTableSeeder extends Seeder {
 		$maxStatusCode = count(Status::all());
 		$maxKitType = count(KitType::all());
 		$maxBranchType = count(Branch::all());
-
 		$kitTypes = KitType::all();
 		$vowels = ['a', 'e', 'i', 'o', 'u'];
 		for($i = count($kitTypes) - 1; $i >= 0; --$i){

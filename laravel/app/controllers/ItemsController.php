@@ -3,13 +3,13 @@
 class ItemsController extends \BaseController {
 	public function create($kit_id) {
 		if (Auth::user()->permission_id != 2) {
-			Session::flash("message", "You must be an admin to do that!");
+			Session::flash("errors", array("You must be an admin to do that!"));
 			return Redirect::to("kits/");
 		}
 		try { 
 			$kit = Kit::findOrFail($kit_id);
 		} catch (Exception $e) {
-			Session::flash("message", "Invalid kit id"); 
+			Session::flash("errors", array("Invalid kit id.")); 
 			return Redirect::to("kits/"); 
 		}
 
@@ -23,14 +23,14 @@ class ItemsController extends \BaseController {
 	public function store($kit_id) {
 		$input = Input::all();
 		if (Auth::user()->permission_id != 2) {
-			Session::flash("message", "You must be an admin to do that!");
+			Session::flash("errors", array("You must be an admin to do that!"));
 			return Redirect::to("kits/");
 		}
 
 		try {
 			$kit = Kit::findOrFail($kit_id);
 		} catch (Exception $e) {
-			Session::flash("message", "Unable to find kits");
+			Session::flash("errors", array("Unable to find kits."));
 			return Redirect::to("/kits/");
 		}
 
@@ -49,7 +49,7 @@ class ItemsController extends \BaseController {
 		$item->save();
 
 
-		Session::flash("message", "Item added");
+		Session::flash("message", "Item added.");
 		return Redirect::to("kits/show/$item->kit_id");
 
 	}
@@ -58,7 +58,7 @@ class ItemsController extends \BaseController {
 		try {
 			$item = Item::findOrFail($id);
 		} catch (Exception $e) {
-			Session::flash("message", "Invalid item id");
+			Session::flash("errors", array("Invalid item id."));
 			return Redirect::to("kits/");
 		}
 
@@ -98,7 +98,7 @@ class ItemsController extends \BaseController {
 
 		
 		$item->save();
-		Session::flash("message", "Updated item successfully");
+		Session::flash("message", "Updated item successfully.");
 		return Redirect::to("kits/show/$item->kit_id");
 
 
@@ -106,14 +106,14 @@ class ItemsController extends \BaseController {
 
 	public function edit($id) {
 		if (Auth::user()->permission_id != 2) {
-			Session::flash("message", "You must be an admin to do that!");
+			Session::flash("errors", array("You must be an admin to do that!"));
 			return Redirect::to("kits/");
 		}
 
 		try {
 			$item = Item::findOrFail($id);
 		} catch (Exception $e) {
-			Session::flash("message", "Invalid item id");
+			Session::flash("errors", array("Invalid item id."));
 			return Redirect::to("kits/");
 		}
 
@@ -126,17 +126,17 @@ class ItemsController extends \BaseController {
 
 	public function destroy($id) {
 		if (Auth::user()->permission_id != 2) {
-			Session::flash("message", "You must be an admin to do that!");
+			Session::flash("errors", array("You must be an admin to do that!"));
 			return Redirect::to("kits/");
 		}
 		try {
 			$item = Item::findOrFail($id);
 		} catch (Exception $e) {
-			Session::flash("message", "Unable to find item");
+			Session::flash("errors", array("Unable to find item."));
 			return Redirect::to("/kits/");
 		}
 		Item::destroy($id);
-		Session::flash("message", "Item Deleted");
+		Session::flash("message", "Item Deleted.");
 		return Redirect::to("kits/show/$item->kit_id");
 	}
 }
