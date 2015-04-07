@@ -85,17 +85,22 @@
     }
     function checkValid(){
         //Need to check for no additional users added?
-        var kit = document.getElementById('kit');
-        if(kit.options[kit.selectedIndex].value == "-1"){
+        var elem = document.getElementById('kit');
+        if(elem.options[elem.selectedIndex].value == "-1"){
             alert('Please select a kit!');
+            return false;
+        }
+        elem = document.getElementById('event');
+        if(elem.value == ""){
+            alert('Please pick an event name!');
             return false;
         }
         return true;
     }
 </script>
 @section ('content')
-<div id = "form">
-    {{ Form::open(array('route' => 'booking.store', 'onsubmit' => 'return checkValid();')) }}
+<div id="form">
+    {{ Form::open(array('route' => 'booking.store', 'onsubmit' => 'return checkValid();', 'style' => 'width:600px;margin-left:-300px;left:50%;position:relative')) }}
     <div>
         {{ Form::label('name', 'Creator:') }}
         {{ Form::label('name', Auth::User()->getName()) }}
@@ -126,7 +131,7 @@
                     echo $str . '</select>';
                 ?>
                 <input type="button" value="Add" onclick="return addUser();">
-                <input style="vertical-align:middle;" type="checkbox" id="branch_allow" onclick="fixUserList(this)"><span style="font-size:10px;"> Show Other Branches</span>
+                <input style="vertical-align:middle;" type="checkbox" id="branch_allow" onclick="fixUserList(this)"><span style="font-size:10px;"> Show People From Other Branches</span>
             </li>
         </ul>
     </div><div>
@@ -139,7 +144,7 @@
         <!-- ONLY WORKS ON Chrome && OPERA-->
     </div><div>
         {{ Form::label('event', 'Event:') }}
-        {{ Form::text('event') }}
+        {{ Form::text('event', null, array('id' => 'event')) }}
     </div><div>
         {{ Form::label('Kit Type', 'Kit Type:') }}
         <?php
