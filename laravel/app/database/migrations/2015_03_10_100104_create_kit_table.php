@@ -13,9 +13,9 @@ class CreateKitTable extends Migration {
 	public function up() {
 		Schema::create('Kits', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('code')->unique();
-            $table->string('description')->nullable();
-            $table->integer('status_id')->nullable();
+            $table->integer('code');
+            $table->string('description');
+            $table->integer('status_id');
             $table->string('note')->nullable();
 			$table->timestamps();
 		});

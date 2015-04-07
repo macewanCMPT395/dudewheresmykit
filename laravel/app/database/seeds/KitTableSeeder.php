@@ -3,18 +3,27 @@ class KitTableSeeder extends Seeder {
 	public function run() {
 		$faker = Faker\Factory::create();
 		$maxStatusCode = count(Status::all());
-		$maxKitType = count(KitType::all()); 
+		$maxKitType = count(KitType::all());
 		$maxBranchType = count(Branch::all());
-		for($j = 0; $j < 20; ++$j){
-			$itemArr = array();
-			$count = 5;
-			Kit::create(array(
-				'code' => $faker->unique()->numberBetween(0, 255655),
-				'description' => $faker->text(64),
-				'branch_id' => $faker->numberBetween(1, $maxBranchType),
-				'status_id' => $faker->numberBetween(1, $maxStatusCode),
-				'type_id' => $faker->numberBetween(1, $maxKitType)
-			));
+
+		$kitTypes = KitType::all();
+		$vowels = ['a', 'e', 'i', 'o', 'u'];
+		for($i = count($kitTypes) - 1; $i >= 0; --$i){
+			$kitType = $kitTypes[$i]->name;
+			$kitType = substr($kitType, 0, strlen($kitType) - 1);
+			if(in_array($kitType[0], $vowels)) $kitType = "n $kitType";
+			else $kitType = " $kitType";
+
+			for($j = 0; $j < 7; ++$j){
+				Kit::create(array(
+					'code' => '3122' . $faker->unique()->numberBetween(1000000000, 1999999999), //Barcode 14 digit, starting with 31221
+					'description' => "This is a$kitType kit.",
+					'note' => ($faker->numberBetween(0, 10) == 5) ? 'Case is damaged' : '',
+					'branch_id' => $faker->numberBetween(1, $maxBranchType),
+					'status_id' => $faker->numberBetween(1, $maxStatusCode),
+					'type_id' => $faker->numberBetween(1, $maxKitType)
+				));
+			}
 		}
 	}
 }
