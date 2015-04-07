@@ -10,6 +10,10 @@ class BookingTableSeeder extends Seeder {
 		for($i = 0; $i < 50; ++$i){
 			$startDay = $faker->dateTimeBetween($startDate = 'now', $endDate = '+6 months');
 			$endDay = $faker->dateTimeBetween($startDate = $startDay, $endDate = '+1 years');
+			//Remove the timestamp
+			$startDay = $startDay->format('Y-m-d');
+			$endDay = $endDay->format('Y-m-d');
+
 			$status_id = $faker->numberBetween(1, $maxStatus);
 			if ($status_id != 3) {
 				$shipped = Carbon\Carbon::now();
