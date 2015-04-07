@@ -90,18 +90,11 @@ Input[Type=text], Input[Type=password], Input[Type=date], select, option {
 	background-image: -o-linear-gradient(top, #000000, #0d0d0d);
 	background-image: linear-gradient(to bottom, #000000, #0d0d0d);
 	text-decoration: none;
-
 }
 
-Input[Type=text]:hover, Input[Type=password]:hover, select:hover, option:hover  {
+Input[Type=text]:hover, Input[Type=text]:active, Input[Type=text]:focus, select:hover, option:hover,
+		Input[Type=password]:hover, Input[Type=password]:active, Input[Type=password]:focus {
 	border: 2px solid #FF00D5;
-}
-Input[Type=text]:focus, Input[Type=password]:focus, select:hover, option:hover  {
-	border: solid 2px #00D43C;
-	box-shadow: inset 0px 1px 2px 0px #9C9C9C;
-}
-Input[Type=text]:active, Input[Type=password]:active  {
-	border: solid 2px #0043EB;
 }
 
 label {
@@ -119,20 +112,20 @@ label {
 
 #logo {
 	width:150px;
-	font-size:42px;
+	font-size:34px;
 	font-weight:bold;
 	margin-left:20px;
+	margin-top:10px;
 	float:left;
 	color: #fff;
 }
 
 #banner {
 	width:1024px;
-	padding-top:5px;
-	border-bottom:1px solid #000;
 	height:50px;
-	background-color: #318596;
+	background-color: #fff;
 }
+
 #menu {
 	text-align:center;
 	list-style-type: none;
@@ -143,29 +136,31 @@ label {
 
 #types {
 	text-align:center;
-	padding: 10px 10px 10px 10px;
 	font-size:18px;
-	background-color:#ADD8E6;
-
+	padding-top: 10px;
+	border: 1px solid black;
+	line-height:1em;
 }
 
-
 #menu li {
-	font-size:22px;
+	margin-left:0px;
+	margin-right:0px;
+	font-size:23px;
+	line-height:1em;
 	margin: 0px 0px 0px 0px;
 	display: inline-block;
 	height:25px;
-	padding-bottom:10px;
 	padding-top:10px;
-	color: black;
+	color: #fff;
 	font-weight:bolder;
+	text-shadow: 1px 1px #000;
 }
 
 #menu a {
 	width:150px;
 	height:45px;
+	margin: 0 0 0 0;
 	display: inline-block;
-	border: 1px solid black;
 }
 
 #menu a:hover {
@@ -176,7 +171,6 @@ label {
 #menuItem1  {
 	background-color: #ffb33a;
 }
-
 
 #menuItem2  {
 	background-color: #5cc043;
@@ -225,12 +219,17 @@ label {
 
 #message {
 	width:600px;
+	font-weight:bold;
 	padding:10px 10px 10px 10px;
 	margin-left:auto;
 	margin-right:auto;
-	color: #000;
-	border: 3px solid green;
+	text-align:center;
+	color: #fff;
+	background-color: green;
 	font-weight:bold;
+	-webkit-border-radius: 4;
+	-moz-border-radius: 4;
+	border-radius: 4px;
 }
 
 #error {
@@ -240,7 +239,16 @@ label {
 	margin-left:auto;
 	margin-right:auto;
 	color: #fff;
+	text-align:center;
 	background-color:#990000;
+	-webkit-border-radius: 4;
+	-moz-border-radius: 4;
+	border-radius: 4px;
+	line-height:2em;
+}
+
+#error ul{
+	list-style-type: none;
 }
 
 h1 {
@@ -265,11 +273,9 @@ h2 {
 
 #content {
 	background-color:#fff;
-	border: 2px solid black;
 	padding:10px 10px 10px 10px;
 	color: #000;
 	line-height:1.2em;
-	border-radius: 1px;
 }
 
 table, th, td {

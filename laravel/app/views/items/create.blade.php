@@ -14,11 +14,6 @@
 
 		<br>
 		
-		{{ Form::label('description', 'Description') }}
-		{{ Form::textarea('description') }}
-
-		<br>
-		
 		{{ Form::submit("Submit") }}
 	{{ Form::close() }}
 @stop

@@ -27,7 +27,7 @@
 			<td>{{{ $booking->status->description }}}</td>
 			<td>
 				@if($booking->status->code == "S")
-					<a href="{{{ url("/transfers/receive/$booking->id") }}}">Receive</a>	
+					<a href="{{{ url("/transfers/receive/$booking->id") }}}"><input type="button" value="Receive"></a>	
 				@else
 					-
 				@endif
@@ -56,8 +56,8 @@
 			<td>{{{ $booking->destination->name }}}</td>
 			<td>{{{ $booking->status->description }}}</td>
 			<td>
-				@if($booking->status->code == "N") 
-					<a href="{{{ url("/transfers/ship/$booking->id") }}}">Ship</a>	
+				@if($booking->status->code == "N" && date('mdy',strtotime($booking->start_date)) == date('mdy',strtotime('now')))
+					<a href="{{{ url("/transfers/ship/$booking->id") }}}"><input type="button" value="Ship"></a>	
 				@else
 					-
 				@endif	

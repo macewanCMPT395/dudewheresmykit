@@ -14,7 +14,6 @@ class CreateItemTable extends Migration {
 		Schema::create('Items', function(Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
             $table->integer('asset_tag')->unique();
             $table->string('note')->nullable();
 			$table->timestamps();

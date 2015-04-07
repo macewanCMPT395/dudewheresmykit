@@ -13,20 +13,21 @@
 		
 		<div id="container">
 			<div id="banner">
-				<a href="/"><span id="logo">
-					KIT-MTS
-				</span></a>
+				<a href="http://epl.ca">
+					{{ HTML::image('img/logo.png', "Logo",  array("style" => "width:150px; height:45px; margin-left:10px; float:left;")) }}
+				</a>
 				<ul id="menu">
-					<a href="{{ url("/booking") }}" id="menuItem1" ><li>Book a Kit</li></a>
-					<a href="{{ url("/kits") }}" id="menuItem2" ><li>View Kits</li></a>
-					<a href="{{ url("/summary") }}" id="menuItem3" ><li>Your Bookings</li></a>
-					<a href="#" id="menuItem4" ><li>Branch</li></a>
-					<a href="{{ url("/transfers") }}" id="menuItem5" ><li>Transfer</li></a>
+					<a href="{{ url("/") }}" id="menuItem1" ><li>Home</li></a><a href="{{ url("/booking") }}" id="menuItem2" ><li>Book a Kit</li></a><a href="{{ url("/kits") }}" id="menuItem3" ><li>View Kits</li></a><a href="{{ url("/summary") }}" id="menuItem4" ><li>Bookings</li></a><a href="{{ url("/transfers") }}" id="menuItem5" ><li>Transfer</li></a>
 				</ul>
 			</div>
-			<div id="back">	
-				<a href="{{ URL::previous() }}"><input type="button" value="Go Back" style="width:200px; float:left; margin-bottom:15px;"></a>
-			</div>
+
+			@if(Request::is('*/*') && !Request::is('/'))
+				@if(Request::url() != URL::previous())
+					<div id="back">	
+						<a href="{{ URL::previous() }}"><input type="button" value="Go Back" style="width:200px; float:left; margin-bottom:15px;"></a>
+					</div>
+				@endif
+			@endif
 			<div id ="user">
 				@if(Auth::check())
 					Welcome back, {{{ Auth::user()->getName() }}} | <a href="/logout">Logout</a>
@@ -59,7 +60,6 @@
 						Default
 					@endif
 				</h1>
-
 					@yield('content')
 				</div>
 			</div>
