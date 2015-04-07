@@ -15,40 +15,64 @@ class BookingsController extends \BaseController {
 	public function store() {
 		$startDate = Input::get('startDate');
 		$endDate = Input::get('endDate');
-		$kit = Input::get('kit');
+		$kitType = Input::get('kit');
 		$users = Input::get('users');
 		$event = Input::get('event');
 		$users = explode (',', $users);
+		$kitType = KitType::findOrFail($kitType);
+		$edate = strtotime($endDate);
+		$date = strtotime($startDate);
+		$date = strtotime('-1 day', $date);
+		$current = date('Y-m-d');
+		$current = strtotime($current);
 		array_shift($users);
 		array_pop($users);
 		array_push($users, Auth::User()->id);
 		$destBranch = Auth::User()->branch_id;
+		if(strtotime($current) <= strtotime($date)){
+			foreach ($kitType->kits as $kit){		
+				$invalidDates = array();
+				foreach ($kit->currentBookings as $booking){
+					for ($i = strtotime($booking->start_date), $end = strtotime($booking->end_date);
+							$i <= $end; $i = strtotime('+1 day', $i)){
+						array_push($invalidDates, $i);
+					}
+				}
+				for ($j = $date; $j > $current; $j = strtotime('-1 day', $j)){
+					if(in_array($date, $invalidDates) || in_array($edate, $invalidDates) || Blackout::where('day', $j)->first()
+							|| (date("N", $j) >= 6)){
+						continue;
+					}
 
-		$booking = Booking::create(array(
-			'destination_branch_id' => $destBranch,
-			'start_date' => $startDate,
-			'end_date' => $endDate,
-			'kit_id' => $kit,
-			'event' => $event,
-			'status_id' => 3
-		));
+					$booking = Booking::create(array(
+						'destination_branch_id' => $destBranch,
+						'start_date' => date('Y-m-d',$j),
+						'end_date' => $endDate,
+						'kit_id' => $kit->id,
+						'event' => $event,
+						'status_id' => 3
+					));
 
-		$booking->users()->attach($users);
-		try {
-			foreach ($users as $id) {
-				$user = User::find($id); 
+					$booking->users()->attach($users);
+					try {
+						foreach ($users as $id) {
+							$user = User::find($id); 
 
-				Mail::send('emails.bookingEmail',array('name' => $user->getName(),
-					'date' => $booking->start_date,'event' => $booking->event),
-					function($message) use ($user){
-					$message->to($user->email)->subject('Booking Creation');
-				});
+							Mail::send('emails.bookingEmail',array('name' => $user->getName(),
+								'date' => $booking->start_date,'event' => $booking->event),
+							function($message) use ($user){
+								$message->to($user->email)->subject('Booking Creation');
+							});
+						}
+					}catch (Exception $e) {
+						Session::flash('errors', array('Invalid Email; Email not sent'));
+					}
+					return Redirect::to ('/summary');
+				}
 			}
-		}catch (Exception $e) {
-			Session::flash('errors', array('Invalid Email; Email not sent'));
-			return Redirect::to ('/summary');
 		}
-		return Redirect::to ('/summary');
+		Session::flash('errors', array('No Kits available for this booking.'));
+		return Redirect::to ('/booking');
 	}
 
 	public function show($id) {
