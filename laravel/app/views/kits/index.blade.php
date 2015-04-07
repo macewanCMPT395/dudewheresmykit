@@ -2,7 +2,9 @@
 
 @section('content')
 	@if(Auth::user()->permission_id >= 2) 
-		<a href="{{{ url("/kits/create") }}}"><h2 style="margin:5px 5px 5px 5px;">Add a kit</h2></a>
+		<a href="{{{ url("/kits/create") }}}"><input type="button" value="Add a Kit"></a>
+		<a href="{{{ url("/types/") }}}"><input type="button" value="Kit Type Management"></a>
+		<br><br>
 	@endif
 	<div id="types"> 
 		| <a href="{{{ url("kits") }}}"> All </a> | 
