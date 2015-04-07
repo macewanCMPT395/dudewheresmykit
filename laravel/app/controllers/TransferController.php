@@ -40,7 +40,7 @@ class TransferController extends \BaseController {
 		}	
 
 		$booking->status_id = 1;
-	   	$booking->shipped = Carbon/Carbon::now();
+	   	$booking->shipped = date("Y-m-d");
 		$booking->save();
 
 		Session::flash('message', 'Kit marked as shipped');

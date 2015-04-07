@@ -14,11 +14,6 @@
 		{{ Form::text('name') }}
 
 		<br>
-		
-		{{ Form::label('description', 'Description') }}
-		{{ Form::textarea('description') }}
-
-		<br>
 
 		{{ Form::label('note', "Note") }}
 		{{ Form::textarea('note') }}

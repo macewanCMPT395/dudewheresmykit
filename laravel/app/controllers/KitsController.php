@@ -22,7 +22,7 @@ class KitsController extends \BaseController {
 		try {
 			$type = KitType::findOrFail($type_id);
 		} catch (Exception $e) {
-			Session::flash("message", "Kit Type does not exist");
+			Session::flash("errors", array("Kit Type does not exist."));
 			return Redirect::to("/kits");
 		}
 		$data = array ( 'title' => $type->name . " Kits", 
@@ -35,7 +35,7 @@ class KitsController extends \BaseController {
 
 	public function create() {
 		if (Auth::user()->permission_id != 2) {
-			Session::flash("message", "You must be admin to do that!");
+			Session::flash("errors", array("You must be admin to do that!"));
 			return Redirect::to("kits/");
 		}	
 		$kitTypes = KitType::all();
@@ -59,7 +59,7 @@ class KitsController extends \BaseController {
 
 	public function store()	{		
 		if (Auth::user()->permission_id != 2) {
-			Session::flash("message", "You must be admin to do that!");
+			Session::flash("errors", array("You must be admin to do that!"));
 			return Redirect::to("kits/");
 		}	
 	
@@ -85,7 +85,7 @@ class KitsController extends \BaseController {
 		try {
 			$kit = Kit::findOrFail($id);
 		} catch (Exception $e)  {
-			Session::flash("message", "Kit $id does not exist.");
+			Session::flash("errors", array("Kit $id does not exist."));
 			Redirect::to("/kits/");
 		}
 
@@ -99,14 +99,14 @@ class KitsController extends \BaseController {
 
 	public function edit($id) {			
 		if (Auth::user()->permission_id != 2) {
-			Session::flash("message", "You must be admin to do that!");
+			Session::flash("errors", array("You must be admin to do that!"));
 			return Redirect::to("kits/");
 		}	
 	
 		try {
 			$kit = Kit::findOrFail($id);	
 		} catch (Exception $e) {
-			Session::flash("message", "Invalid kit id");
+			Session::flash("errors", array("Invalid kit id."));
 			Redirect::to("kits");
 		}
 
@@ -160,7 +160,7 @@ class KitsController extends \BaseController {
 
 		
 		$kit->save();
-		Session::flash("message", "Updated kit successfully");
+		Session::flash("message", "Updated kit successfully.");
 		return Redirect::to("kits/show/$id");
 	}
 
@@ -170,7 +170,7 @@ class KitsController extends \BaseController {
 			return Redirect::to("kits/");
 		}	
 		Kit::destroy($id);
-		Session::flash("message", "Kit deleted");
+		Session::flash("message", "Kit deleted.");
 		return Redirect::to("kits/");
 	}
 
@@ -178,7 +178,7 @@ class KitsController extends \BaseController {
 		try {
 			$kit = Kit::findOrFail($id); 		
 		} catch (Exception $e) {
-			Session::flash('message', "Kit $id does not exist.");
+			Session::flash('errors', array("Kit $id does not exist."));
 			return Redirect::to("/kits");
 		}
 
