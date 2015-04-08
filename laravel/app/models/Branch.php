@@ -11,13 +11,15 @@ class Branch extends Eloquent {
 		return $this->bookings()->where('end_date', '<=', 'TIME()'); 
 	}
 
-	public function activeOutgoingBookings() {
+	public function activeOutgoingBookings($only=false) {
 		// Ugly solution I'm sorry... I tried eager loading and failed.
 		$bookings = Booking::where('end_date', '<=', 'TIME()')->get();
 		$outgoing = array();
 		foreach ($bookings as $booking) {
 			if ($booking->kit->branch_id == $this->id) {
-				array_push($outgoing, $booking);
+				if (!$only || $booking->status_id == 3) {
+					array_push($outgoing, $booking);
+				}
 			}
 		}
 		return $outgoing;

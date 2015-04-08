@@ -1,8 +1,6 @@
 <?php
 Route::group(['before' => 'auth'], function() {
-	Route::get('/', function() {
-		return View::make('hello');
-	});
+	Route::get('/', 'HomeController@home');
 	Route::resource('booking','BookingsController');
 	Route::get('types/{id}/destroy','KitTypesController@destroy');
 	Route::resource('types','KitTypesController');
