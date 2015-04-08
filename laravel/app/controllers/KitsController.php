@@ -155,7 +155,7 @@ class KitsController extends \BaseController {
 			}
 		} else {
 			$note = $userinput['note'];
-			$kit->note = $kit->note . " | $note";
+			$kit->note = $kit->note . ($kit->note ? " | $note" : $note);
 		}
 
 		
