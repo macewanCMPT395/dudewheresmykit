@@ -27,11 +27,7 @@
 		<tr>
 			<td>{{{ $kit->type->name }}}</td>
 			<td>{{{ $kit->code }}}</td>
-			@if($kit->note)
-				<td style="color: #fff; background-color: red; font-weight:bold;">{{{ $kit->note }}}</td>
-			@else
-				<td></td>
-			@endif
+			<td @if($kit->note)style="color: #fff; background-color: red; font-weight:bold;"@endif>{{{ $kit->note }}}</td>
 			<td>
 				<a href="{{{ url("booking/$kit->id") }}}"><input type="button" value="Book it!"></a>
 				<a href="{{{ url("kits/report/$kit->id") }}}"><input type="button" value="Report problem"></a>
