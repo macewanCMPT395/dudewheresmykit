@@ -13,7 +13,7 @@ class KitTypesController extends \BaseController {
 
 	public function create() {
 		$data = array(
-			'title' => 'Create New Kit Type (Admins only)'
+			'title' => 'Create New Kit Type'
 		);
 
 		return View::make("types/new")->with($data);
@@ -29,7 +29,7 @@ class KitTypesController extends \BaseController {
 
 		$data = array(
 			'type' => $type,
-			'title' => "Editing Kit Type: $type->name (Admins only)"		
+			'title' => "Editing Kit Type: $type->name"
 		);
 
 		return View::make("types/edit")->with($data);
@@ -60,7 +60,7 @@ class KitTypesController extends \BaseController {
 
 	public function index() {
 		$data = array(
-			'title' => 'Kit Types (Admins only)',
+			'title' => 'Kit Types',
 			'types' => KitType::all()
 		);
 		
@@ -110,7 +110,7 @@ class KitTypesController extends \BaseController {
 		}
 
 		$data = array( 
-			'title' => "Details of $type->name (Admins only)",
+			'title' => "Details of $type->name",
 			'type' => $type 
 		);
 		return View::make('/types/show')->with($data);

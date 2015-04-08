@@ -23,7 +23,7 @@
 	<p><b>Kit Contains:</b></p>
 	<table>
 		<tr>
-			<th style="width:90px;">Item #</th>
+			<th style="width:90px;">Asset Tag</th>
 			<th style="width:150px;">Name</th>
 			@if(Auth::user()->permission_id >= 2)
 				<th style="width:250px;">Note</th>
