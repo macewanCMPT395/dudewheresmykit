@@ -89,6 +89,17 @@ class BookingsController extends \BaseController {
 	}
 
 	public function destroy($id) {
-		//
+		if ($booking = Booking::find($id)){
+			$user = Auth::User();
+			if((in_array($user->id, $booking->users->all()) || ($user->permission_id == 2) 
+					|| (($user->permission_id == 1) && ($booking->kit->branch_id == $user->branch_id))))
+				$booking->destroy($id);
+			else
+				Session::flash('errors', array('Permission required to delete this booking.'));
+		}else{
+			Session::flash('errors', array('Unable to find kit to delete.'));
+		}
+			
+			return Redirect::to('/summary');
 	}
 }
