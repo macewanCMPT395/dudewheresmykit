@@ -93,7 +93,7 @@ class ItemsController extends \BaseController {
 			}
 		} else {
 			$note = $userinput["note"];
-			$item->note = "$item->note | $note";
+			$item->note = $item->note . ($item->note ? " | $note" : $note );
 		}
 
 		
