@@ -1,7 +1,7 @@
 <?php
 class KitTypeSeeder extends Seeder {
 	public function run() {
-		$types = ['iPads','iPods','Laptops','Arduinos','Raspberry Pis'];
+		$types = ['iPad','iPod','Laptop','Arduino','Raspberry Pi'];
 		foreach($types as $name) {
 			KitType::create(array('name' => $name));
 		}

@@ -9,10 +9,8 @@ class KitTableSeeder extends Seeder {
 		$vowels = ['a', 'e', 'i', 'o', 'u'];
 		for($i = count($kitTypes) - 1; $i >= 0; --$i){
 			$kitType = $kitTypes[$i]->name;
-			$kitType = substr($kitType, 0, strlen($kitType) - 1);
 			if(in_array($kitType[0], $vowels)) $kitType = "n $kitType";
 			else $kitType = " $kitType";
-
 			for($j = 0; $j < 7; ++$j){
 				Kit::create(array(
 					'code' => '3122' . $faker->unique()->numberBetween(1000000000, 1999999999), //Barcode 14 digit, starting with 31221
@@ -20,7 +18,7 @@ class KitTableSeeder extends Seeder {
 					'note' => ($faker->numberBetween(0, 10) == 5) ? 'Case is damaged' : '',
 					'branch_id' => $faker->numberBetween(1, $maxBranchType),
 					'status_id' => $faker->numberBetween(1, $maxStatusCode),
-					'type_id' => $faker->numberBetween(1, $maxKitType)
+					'type_id' => $kitTypes[$i]->id
 				));
 			}
 		}

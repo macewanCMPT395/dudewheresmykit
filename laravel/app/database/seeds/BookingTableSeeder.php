@@ -22,7 +22,7 @@ class BookingTableSeeder extends Seeder {
 			}
 			$kit = Kit::find($faker->numberBetween(1, $maxKit));
 			$event = $kit->type->name;
-			$event = substr($event, 0, strlen($event) - 1) . ' Workshop';
+			$event = $event . ' Workshop';
 			$booking = Booking::create(array(
 				'destination_branch_id' => $faker->numberBetween(1, $maxBranch),
 				'kit_id' => $kit->id,
