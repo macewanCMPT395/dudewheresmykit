@@ -224,6 +224,7 @@ label {
 	margin-left:auto;
 	margin-right:auto;
 	text-align:center;
+	font-size: 22px;
 	color: #fff;
 	background-color: green;
 	font-weight:bold;
@@ -233,6 +234,7 @@ label {
 }
 
 #error {
+	font-size: 22px;
 	font-weight:bold;
 	width:600px;
 	padding:10px 10px 10px 10px;

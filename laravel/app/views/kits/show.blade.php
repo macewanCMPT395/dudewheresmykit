@@ -23,7 +23,7 @@
 	<p><b>Kit Contains:</b></p>
 	<table>
 		<tr>
-			<th style="width:90px;">Item #</th>
+			<th style="width:90px;">Asset Tag</th>
 			<th style="width:150px;">Name</th>
 			@if(Auth::user()->permission_id >= 2)
 				<th style="width:250px;">Note</th>
@@ -37,7 +37,7 @@
 			<tr>
 				<td><b>{{{ $item->asset_tag }}}</b></td>
 				<td><b>{{{ $item->name }}}</b></td>
-				<td>{{{ $item->note }}}</td> 
+				<td @if($item->note)style="color: #fff; background-color: red; font-weight:bold;" @endif>{{{ $item->note }}}</td>
 				<td><a href="{{{ url("/items/report/$item->id") }}}"><input type="button" value="Report Problem"></a> 
 					@if(Auth::user()->permission_id >= 2) 
 						<a href="{{{ url("/items/edit/$item->id") }}}"><input type="button" value="Edit Item"></a>
