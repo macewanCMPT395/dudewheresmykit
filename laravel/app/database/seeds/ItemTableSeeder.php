@@ -4,7 +4,6 @@ class ItemTableSeeder extends Seeder {
 		$faker = Faker\Factory::create();
 		foreach(Kit::all() as $kit){
 			$type = $kit->type->name;
-			$type = substr($type, 0, strlen($type) - 1);
 			for($i = 0; $i < 5; ++$i){
 				Item::create(array(
 					'name' => $type,
