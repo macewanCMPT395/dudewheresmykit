@@ -6,7 +6,11 @@ Route::group(['before' => 'auth'], function() {
 	Route::resource('booking','BookingsController');
 	Route::get('types/{id}/destroy','KitTypesController@destroy');
 	Route::resource('types','KitTypesController');
+
 	Route::get('summary','SummaryController@index');
+	Route::post('summary', 'SummaryController@index');
+	Route::get("/bookings/destroy/{id}", 'BookingsController@destroy');
+
 	Route::get("/items/create/{id}", 'ItemsController@create');
 	Route::post("/items/store/{id}", 'ItemsController@store');
 	Route::get("/items/report/{id}", 'ItemsController@report');
