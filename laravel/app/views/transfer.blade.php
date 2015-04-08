@@ -4,8 +4,8 @@
 	<table>
 		<tr>
 			<th style="width:200px;">Shipped</th>
-			<th style="width:200px;">Start Date</th>
-			<th style="width:300px;">Desintation Bracnh</th>
+			<th style="width:200px;">Event Start Date</th>
+			<th style="width:300px;">Sent From</th>
 			<th style="width:100px;">Status</th>
 			<th style="width:100px;">Controls</th>
 		</tr>
@@ -41,7 +41,7 @@
 		<tr>
 			<th style="width:200px;">Date to Ship</th>
 			<th style="width:200px;">Start Date</th>
-			<th style="width:300px;">Desintation Branch</th>
+			<th style="width:300px;">Destination Branch</th>
 			<th style="width:100px;">Status</th>
 			<th style="width:100px;">Controls</th>
 		</tr>
