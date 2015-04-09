@@ -13,7 +13,8 @@ class KitTypesController extends \BaseController {
 
 	public function create() {
 		$data = array(
-			'title' => 'Create New Kit Type'
+			'title' => 'Create New Kit Type',
+			'back' => url("types/")
 		);
 
 		return View::make("types/new")->with($data);
@@ -29,7 +30,8 @@ class KitTypesController extends \BaseController {
 
 		$data = array(
 			'type' => $type,
-			'title' => "Editing Kit Type: $type->name"
+			'title' => "Editing Kit Type: $type->name",
+			'back' => url("types/$id")
 		);
 
 		return View::make("types/edit")->with($data);
@@ -61,7 +63,8 @@ class KitTypesController extends \BaseController {
 	public function index() {
 		$data = array(
 			'title' => 'Kit Types',
-			'types' => KitType::all()
+			'types' => KitType::all(),
+			'back' => url("kits/")
 		);
 		
 		return View::make("types/index")->with($data);
@@ -111,7 +114,8 @@ class KitTypesController extends \BaseController {
 
 		$data = array( 
 			'title' => "Details of $type->name",
-			'type' => $type 
+			'type' => $type,
+			'back' => url("/types/")
 		);
 		return View::make('/types/show')->with($data);
 	}	

@@ -21,12 +21,10 @@
 				</ul>
 			</div>
 
-			@if(Request::is('*/*') && !Request::is('/'))
-				@if(Request::url() != URL::previous())
-					<div id="back">	
-						<a href="{{ URL::previous() }}"><input type="button" value="Go Back" style="width:200px; float:left; margin-bottom:15px;"></a>
-					</div>
-				@endif
+			@if(isset($back))
+				<div id="back">
+					<a href="{{ $back }}"><input type="button" value="Go Back" style="width:200px; float:left; margin-bottom:15px;"></a>
+				</div>
 			@endif
 			<div id ="user">
 				@if(Auth::check())
