@@ -7,14 +7,35 @@ class BookingTableSeeder extends Seeder {
 		$maxKit= count(Kit::all());
 		$maxStatus = count(Status::all());
 
+		$booking = Booking::create(array(
+				'destination_branch_id' => 1,
+				'kit_id' => 1,
+				'status_id' => 1,
+				'shipped' => '2015-04-12',
+				'start_date' => '2015-04-13',
+				'end_date' => '2015-04-16',
+				'event' => 'Important Workshop'
+			));
+
+		$booking = Booking::create(array(
+				'destination_branch_id' => 2,
+				'kit_id' => 2,
+				'status_id' => 3,
+				'start_date' => '2015-04-10',
+				'end_date' => '2015-04-12',
+				'event' => 'Very Important Workshop'
+			));
+
 		for($i = 0; $i < 50; ++$i){
 			$startDay = $faker->dateTimeBetween($startDate = 'now', $endDate = '+6 months');
-			$endDay = $faker->dateTimeBetween($startDate = $startDay, $endDate = '+1 years');
+			$endDay = $startDay;
+			date_add($endDay, date_interval_create_from_date_string('10 days'));
+			$endDay = $faker->dateTimeBetween($startDate = $startDay, $endDate = $endDay);
 			//Remove the timestamp
 			$startDay = $startDay->format('Y-m-d');
 			$endDay = $endDay->format('Y-m-d');
 
-			$status_id = $faker->numberBetween(1, $maxStatus);
+			$status_id = $startDate->format('U') <= date('U', strtotime('+1 days')) ? $faker->numberBetween(1, 2) : 3;
 			if ($status_id != 3) {
 				$shipped = Carbon\Carbon::now();
 			} else {

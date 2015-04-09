@@ -7,6 +7,24 @@ class KitTableSeeder extends Seeder {
 		$maxBranchType = count(Branch::all());
 		$kitTypes = KitType::all();
 		$vowels = ['a', 'e', 'i', 'o', 'u'];
+
+		Kit::create(array(
+			'code' => '3122' . $faker->unique()->numberBetween(1000000000, 1999999999), //Barcode 14 digit, starting with 31221
+			'description' => "This is an iPad kit.",
+			'note' => '',
+			'branch_id' => 2,
+			'status_id' => 1,
+			'type_id' => 1
+		));
+		Kit::create(array(
+			'code' => '3122' . $faker->unique()->numberBetween(1000000000, 1999999999), //Barcode 14 digit, starting with 31221
+			'description' => "This is an iPad kit.",
+			'note' => '',
+			'branch_id' => 1,
+			'status_id' => 2,
+			'type_id' => 1
+		));
+
 		for($i = count($kitTypes) - 1; $i >= 0; --$i){
 			$kitType = $kitTypes[$i]->name;
 			if(in_array($kitType[0], $vowels)) $kitType = "n $kitType";

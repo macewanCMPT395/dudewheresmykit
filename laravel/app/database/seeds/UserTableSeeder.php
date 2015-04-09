@@ -9,7 +9,7 @@ class UserTableSeeder extends Seeder {
 		User::create(array(
 			'first_name' => 'John',
 			'last_name' => 'Doe',
-			'email' => 'randomtestmailer+jdoeuser@gmail.com',
+			'email' => 'johndoe@example.com',
 			'password' => Hash::make('user'),
 			'phone' => $faker->phoneNumber,
 			'permission_id' => 0,
@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder {
 		User::create(array(
 			'first_name' => 'Jack',
 			'last_name' => 'Doe',
-			'email' => 'randomtestmailer+jdoemanager@gmail.com',
+			'email' => 'jackdoe@example.com',
 			'password' => Hash::make('manager'),
 			'phone' => $faker->phoneNumber,
 			'permission_id' => 1,
@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder {
 		User::create(array(
 			'first_name' => 'Jane',
 			'last_name' => 'Doe',
-			'email' => 'randomtestmailer+jdoeadmin@gmail.com',
+			'email' => 'janedoe@example.com',
 			'password' => Hash::make('admin'),
 			'phone' => $faker->phoneNumber,
 			'remember_token' => str_random(64),
