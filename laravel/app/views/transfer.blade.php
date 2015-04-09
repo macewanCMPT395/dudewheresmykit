@@ -11,8 +11,8 @@
 			<th style="width:100px;">Status</th>
 			<th style="width:100px;">Controls</th>
 		</tr>
-		@foreach($in as $booking) 
-			@if ($booking->status->code == 'S') 
+		@foreach($in as $booking)
+			@if ($booking->status->code == 'S')
 				<tr style="font-weight:bold;">
 			@else
 				<tr style="background-color: #ddd; font-style:italic;">
@@ -31,7 +31,7 @@
 			<td>{{{ $booking->status->description }}}</td>
 			<td>
 				@if($booking->status->code == "S")
-					<a href="{{{ url("/transfers/receive/$booking->id") }}}"><input type="button" value="Receive"></a>	
+					<a href="{{{ url("/transfers/receive/$booking->id") }}}"><input type="button" value="Receive"></a>
 				@else
 					-
 				@endif
@@ -50,7 +50,7 @@
 			<th style="width:100px;">Status</th>
 			<th style="width:100px;">Controls</th>
 		</tr>
-		@foreach($out as $booking) 
+		@foreach($out as $booking)
 			@if($booking->status->code != 'N')
 				<tr style="background-color: #ddd; font-style:italic;">
 			@else
@@ -62,11 +62,11 @@
 			<td>{{{ $booking->destination->name }}}</td>
 			<td>{{{ $booking->status->description }}}</td>
 			<td>
-				@if($booking->status->code == "N" && date('mdy',strtotime($booking->start_date)) == date('mdy',strtotime('now')))
-					<a href="{{{ url("/transfers/ship/$booking->id") }}}"><input type="button" value="Ship"></a>	
+				@if($booking->status->code == "N" && date('mdy',strtotime($booking->ship_date)) == date('mdy',strtotime('now')))
+					<a href="{{{ url("/transfers/ship/$booking->id") }}}"><input type="button" value="Ship"></a>
 				@else
 					-
-				@endif	
+				@endif
 			</td>
 			</tr>
 		@endforeach

@@ -3,7 +3,7 @@
 class TransferController extends \BaseController {
 
 	private static function compare($a, $b) {
-		return strcmp($a->status_id, $b->status_id);
+		return strcmp(strtotime($a->ship_date), strtotime($b->ship_date));
 	}
 
 	public function shipDate($booking) {
@@ -14,26 +14,27 @@ class TransferController extends \BaseController {
 		// While date is either a stat holiday OR a weekend, move back one day.
 		while (Blackout::where('day',$date)->first() || date("N", $date) >= 6) {
 			$date = strtotime('-1 day', $date);
-		}	
+		}
 		return date('l, M d, Y',$date);
 	}
-	
+
 	public function index() {
 		$branch = Auth::user()->branch;
 		$out = $branch->activeOutgoingBookings();
-		usort($out, array('TransferController', "compare"));
 		$in = $branch->activeIncomingBookings->sortBy("status_id");
 
 		foreach ($out as $booking) {
-			$booking->ship_date = $this->shipDate($booking); 
-		}	
+			$booking->ship_date = $this->shipDate($booking);
+		}
+
+		usort($out, array('TransferController', "compare"));
 		$data = array (
 			'title' => 'Transfers',
 			'in' => $in,
 			'out' => $out
 		);
-	
-		return View::make('transfer')->with($data); 
+
+		return View::make('transfer')->with($data);
 	}
 
 	public function ship($id) {
@@ -42,7 +43,7 @@ class TransferController extends \BaseController {
 		} catch (Exception $e) {
 			Session::flash('message', "Invalid booking id");
 			return redirect_to("/transfers");
-		}	
+		}
 
 		$booking->status_id = 1;
 	   	$booking->shipped = date("Y-m-d");
@@ -58,7 +59,7 @@ class TransferController extends \BaseController {
 		} catch (Exception $e) {
 			Session::flash('message', "Invalid booking id");
 			return redirect_to("/transfers");
-		}	
+		}
 
 		$booking->status_id = 2;
 		$booking->save();
