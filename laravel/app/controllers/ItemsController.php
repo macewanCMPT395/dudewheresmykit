@@ -15,7 +15,8 @@ class ItemsController extends \BaseController {
 
 		$data = array(
 			"title" => "Create item",
-			"kit" => $kit
+			"kit" => $kit,
+			"back" => url("kits/show/$kit_id")
 		);
 		return View::make("items/create")->with($data);
 	}
@@ -64,7 +65,8 @@ class ItemsController extends \BaseController {
 
 		$data = array(
 			"title" => "Report item problem",
-			"item" => $item
+			"item" => $item,
+			"back" => url("kits/show/$item->kit_id")
 		);
 		return View::make("items/report")->with($data);
 
@@ -119,7 +121,8 @@ class ItemsController extends \BaseController {
 
 		$data = array(
 			"title" => "Edit Item",
-			"item" => $item
+			"item" => $item,
+			"back" => url("kits/show/$item->kit_id")
 		);
 		return View::make("items/edit")->with($data);
 	}	

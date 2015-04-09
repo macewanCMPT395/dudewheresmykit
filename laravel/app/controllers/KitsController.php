@@ -52,8 +52,9 @@ class KitsController extends \BaseController {
 		}
 		
 		$data = array ( 'title' => "Create Kit",
-						'types' => $types,
-						'branches' => $branches	);
+			'types' => $types,
+			'branches' => $branches,
+			'back' => url("/kits"));
 		return View::make ('kits/new')->with($data);
 	}
 
@@ -91,7 +92,8 @@ class KitsController extends \BaseController {
 
 		$data = array (
 			"title" => "Kit #$kit->code Details",
-			"kit" => $kit
+			"kit" => $kit,
+			"back" => url("/kits")
 		);
 
 		return View::make("/kits/show")->with($data);
@@ -125,7 +127,8 @@ class KitsController extends \BaseController {
 			"kit" => $kit,
 			"title" => "Edit Kit #$kit->code",
 			"branches" => $branches,
-			"types" => $types
+			"types" => $types,
+			"back" => url("kits/show/$id")
 		);
 
 		return View::make("kits/edit")->with($data);
@@ -184,7 +187,8 @@ class KitsController extends \BaseController {
 
 		$data = array (
 			'title' => "Report problem",
-			'kit' => $kit
+			'kit' => $kit,
+			'back' => url("kits/show/$id")
 		);
 
 		return View::make('kits/report')->with($data); 
