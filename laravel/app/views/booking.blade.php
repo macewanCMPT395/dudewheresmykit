@@ -143,7 +143,7 @@
         <input name="endDate" id="endDate" type="date" value={{ date('Y-m-d', time() + 86400) }} onblur="checkValidDate(this)">
         <!-- ONLY WORKS ON Chrome && OPERA-->
     </div><div>
-        {{ Form::label('event', 'Event:') }}
+        {{ Form::label('event', 'Event Name:') }}
         {{ Form::text('event', null, array('id' => 'event')) }}
     </div><div>
         {{ Form::label('Kit Type', 'Kit Type:') }}
@@ -154,7 +154,7 @@
             }
             asort($kits);
             $kitid = isset($kitId) ? Kit::find($kitId)->type_id : -1;
-            $str = '<select name="kit" id="kit"><option value="-1">Pick a kit</option>';
+            $str = '<select name="kit" id="kit"><option value="-1">Pick a kit type</option>';
             foreach($kits as $kit){
                 $arr = explode('::', $kit);
                 $selected = "";
@@ -164,7 +164,7 @@
             }
             echo $str . "</select> or ";
         ?>
-        <input type="button" value="Find One!" onclick="window.location = '/kits'">
+        <input type="button" value="Find One" onclick="window.location = '/kits'">
     </div><div style="width:100%;">
         <input type="submit" onsubmit="return 0;" style="width:100px;left:50%;position:relative;margin-top:1em;margin-bottom:0.5em;margin-left:-50px">
     </div>
