@@ -4,7 +4,7 @@
 
 	{{ Form::open(array('url' => "kits/update/$kit->id")) }}
 
-		<p>What is the problem with kit {{{ $kit->description }}} ({{{ $kit->code }}})?</p>
+		<p>Please report any problems with kit {{{ $kit->code }}}</p>
 		{{ Form::textarea('note') }} 
 		
 		<br>

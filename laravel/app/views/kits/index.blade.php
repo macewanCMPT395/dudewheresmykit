@@ -20,7 +20,7 @@
 			<th style="width:100px;">Kit Type</th>
 			<th style="width:110px;">Barcode</th>
 			<th style="width:150px;">Notes</th>
-			<th style="width:300px;">Control</th>
+			<th style="width:300px;">Controls</th>
 		</tr>
 
 	@foreach($kits as $kit)
@@ -29,8 +29,8 @@
 			<td>{{{ $kit->code }}}</td>
 			<td @if($kit->note)style="color: #fff; background-color: red; font-weight:bold;"@endif>{{{ $kit->note }}}</td>
 			<td>
-				<a href="{{{ url("booking/$kit->id") }}}"><input type="button" value="Book it!"></a>
-				<a href="{{{ url("kits/report/$kit->id") }}}"><input type="button" value="Report problem"></a>
+				<a href="{{{ url("booking/$kit->id") }}}"><input type="button" value="Book Kit"></a>
+				<a href="{{{ url("kits/report/$kit->id") }}}"><input type="button" value="Report Problem"></a>
 				<a href="{{{ url("kits/show/$kit->id") }}}"><input type="button" value="Details"></a>
 			</td>
 		</tr>	

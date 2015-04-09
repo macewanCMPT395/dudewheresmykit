@@ -1,7 +1,7 @@
 @extends("master")
 @section("content")
 
-	<a href="{{ url("/types/create") }}"><input type="button" value="Create a New Kit Type"></a>
+	<a href="{{ url("/types/create") }}"><input type="button" value="Create New Kit Type"></a>
 	<br><br>
 
 	<table>
