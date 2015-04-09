@@ -71,7 +71,7 @@ class BookingsController extends \BaseController {
 				}
 			}
 		}
-		Session::flash('errors', array('No Kits available for this booking.'));
+		Session::flash('errors', array('Cannot create booking; Please consult booking rules.'));
 		return Redirect::to ('/booking');
 	}
 
@@ -90,10 +90,16 @@ class BookingsController extends \BaseController {
 
 	public function destroy($id) {
 		if ($booking = Booking::find($id)){
-			$user = Auth::User();
-			if((in_array($user->id, $booking->users->all()) || ($user->permission_id == 2) 
-					|| (($user->permission_id == 1) && ($booking->kit->branch_id == $user->branch_id))))
-				$booking->destroy($id);
+			$user = Auth::user(); 
+			$hit = false;
+			foreach ($booking->users->all() as $positive) {
+				if ($positive->id == $user->id) {
+					$hit = true;
+				}	
+			}
+			if( $hit || ($user->permission_id == 2) || (($user->permission_id == 1) 
+					&& ($booking->kit->branch_id == $user->branch_id)))
+					$booking->destroy($id);
 			else
 				Session::flash('errors', array('Permission required to delete this booking.'));
 		}else{
