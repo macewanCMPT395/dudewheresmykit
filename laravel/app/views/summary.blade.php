@@ -32,7 +32,7 @@
 			@foreach ($bookings as $booking)
 				<tr>
 					<td>{{{ $booking->event }}}</td>
-					<td>{{{ $booking->kit->description }}}</td>
+					<td>{{{ $booking->kit->type->name }}}</td>
 					<td>{{{ $booking->destination->code }}}</td>
 					<td>{{{ $booking->start_date }}}</td>
 					<td>{{{ $booking->end_date }}}</td>
