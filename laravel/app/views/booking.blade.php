@@ -162,9 +162,8 @@
                     $selected = "selected";
                 $str .= "<option $selected value=\"$arr[1]\">$arr[0]</option>";
             }
-            echo $str . "</select> or ";
+            echo $str . "</select>";
         ?>
-        <input type="button" value="Find One" onclick="window.location = '/kits'">
     </div><div style="width:100%;">
         <input type="submit" onsubmit="return 0;" style="width:100px;left:50%;position:relative;margin-top:1em;margin-bottom:0.5em;margin-left:-50px">
     </div>
