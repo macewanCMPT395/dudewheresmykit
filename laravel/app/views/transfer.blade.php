@@ -62,7 +62,7 @@
 			<td>{{{ $booking->destination->name }}}</td>
 			<td>{{{ $booking->status->description }}}</td>
 			<td>
-				@if($booking->status->code == "N" && date('mdy',strtotime($booking->start_date)) == date('mdy',strtotime('now')))
+				@if($booking->status->code == "N" && date('mdy',strtotime($booking->ship_date)) == date('mdy',strtotime('now')))
 					<a href="{{{ url("/transfers/ship/$booking->id") }}}"><input type="button" value="Ship"></a>	
 				@else
 					-
