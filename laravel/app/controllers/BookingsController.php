@@ -95,9 +95,9 @@ class BookingsController extends \BaseController {
 					|| (($user->permission_id == 1) && ($booking->kit->branch_id == $user->branch_id))))
 				$booking->destroy($id);
 			else
-				Session::flash('errors', array('Permission required to delete this booking.'));
+				Session::flash('errors', array('You do not have permission to delete this booking.'));
 		}else{
-			Session::flash('errors', array('Unable to find kit to delete.'));
+			Session::flash('errors', array('Unable to delete booking. Please contact system administrator.'));
 		}
 			
 			return Redirect::to('/summary');
