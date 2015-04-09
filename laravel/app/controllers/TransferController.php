@@ -2,6 +2,10 @@
 
 class TransferController extends \BaseController {
 
+	private static function compare($a, $b) {
+		return strcmp($a->status_id, $b->status_id);
+	}
+
 	public function shipDate($booking) {
 		$date = $booking->start_date;
 		$date = strtotime($date);
@@ -17,7 +21,8 @@ class TransferController extends \BaseController {
 	public function index() {
 		$branch = Auth::user()->branch;
 		$out = $branch->activeOutgoingBookings();
-		$in = $branch->activeIncomingBookings;
+		usort($out, array('TransferController', "compare"));
+		$in = $branch->activeIncomingBookings->sortBy("status_id");
 
 		foreach ($out as $booking) {
 			$booking->ship_date = $this->shipDate($booking); 
