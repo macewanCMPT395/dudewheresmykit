@@ -11,7 +11,7 @@
 				{{ HTML::image('img/logo.png') }}
 				<h1>KIT-MTS Login</h1>
 				@if(Session::has('badlogin'))
-					<p style="font-weight:bold;">Invalid username and/or password.</p>
+					<p style="font-weight:bold; color:white; background-color:red; padding: 5px 5px 5px 5px; text-align:center;">Invalid credentials.</p>
 				@endif
 				{{ Form::open(array('post' => 'login'))}}
 					<div>

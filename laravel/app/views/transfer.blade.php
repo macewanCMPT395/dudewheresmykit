@@ -4,8 +4,10 @@
 	<table>
 		<tr>
 			<th style="width:200px;">Shipped</th>
+			<th style="width:250px;">Event Name</th>
+			<th style="width:100px;">Kit Name</th>
+			<th style="width:200px;">Kit Barcode</th>
 			<th style="width:200px;">Event Start Date</th>
-			<th style="width:300px;">Sent From</th>
 			<th style="width:100px;">Status</th>
 			<th style="width:100px;">Controls</th>
 		</tr>
@@ -22,8 +24,10 @@
 					Not Yet Shipped
 				@endif
 			</td>
+			<td>{{{ $booking->event }}}</td>
+			<td>{{{ $booking->kit->type->name }}}</td>
+			<td>{{{ $booking->kit->code }}}</td>
 			<td>{{{ date('l, M d, Y', strtotime($booking->start_date)) }}}</td>
-			<td>{{{ $booking->kit->branch->name }}}</td>
 			<td>{{{ $booking->status->description }}}</td>
 			<td>
 				@if($booking->status->code == "S")
@@ -40,8 +44,9 @@
 	<table>
 		<tr>
 			<th style="width:200px;">Date to Ship</th>
-			<th style="width:200px;">Start Date</th>
-			<th style="width:300px;">Destination Branch</th>
+			<th style="width:150px;">Kit Type</th>
+			<th style="width:200px;">Kit Barcode</th>
+			<th style="width:200px;">Destination Branch</th>
 			<th style="width:100px;">Status</th>
 			<th style="width:100px;">Controls</th>
 		</tr>
@@ -52,7 +57,8 @@
 				<tr style="font-weight:bold;">
 			@endif
 			<td>{{{ $booking->ship_date }}}</td>
-			<td>{{{ date('l, M d, Y', strtotime($booking->start_date)) }}}</td>
+			<td>{{{ $booking->kit->type->name }}}</td>
+			<td>{{{ $booking->kit->code }}}</td>
 			<td>{{{ $booking->destination->name }}}</td>
 			<td>{{{ $booking->status->description }}}</td>
 			<td>
