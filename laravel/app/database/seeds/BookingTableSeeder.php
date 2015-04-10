@@ -17,6 +17,7 @@ class BookingTableSeeder extends Seeder {
 				'event' => 'Important Workshop'
 			));
 		$booking->users()->attach(1);
+
 		$booking = Booking::create(array(
 				'destination_branch_id' => 2,
 				'kit_id' => 2,
@@ -25,7 +26,8 @@ class BookingTableSeeder extends Seeder {
 				'end_date' => '2015-04-12',
 				'event' => 'Very Important Workshop'
 			));
-                $booking->users()->attach(4);
+		$booking->users()->attach(4);
+
 		for($i = 0; $i < 50; ++$i){
 			$startDay = $faker->dateTimeBetween($startDate = 'now', $endDate = '+6 months');
 			$endDay = $startDay;
@@ -57,7 +59,7 @@ class BookingTableSeeder extends Seeder {
 			// Get random user ids to attach.
 			$users = array();
 			for ($j = 0; $j < 4; $j++) {
-				$number = $faker->numberBetween(1, $maxUser);
+				$number = $faker->numberBetween(4, $maxUser);
 				if (!in_array($number, $users)) {
 					array_push($users, $number);
 				}
