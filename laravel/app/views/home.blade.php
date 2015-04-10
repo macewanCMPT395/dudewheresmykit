@@ -45,7 +45,7 @@
 			<th>Amount of Kits</th>
 		</tr>
 		@foreach($newKitTypes as $type)
-			<tr>
+			<tr onclick="window.location='{{url("/kits/$type->id")}}'">
 				<td>{{{ $type->name }}}</td>
 				<td>{{{ count($type->kits) }}}</td>
 			</tr>
