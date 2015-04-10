@@ -16,7 +16,7 @@ class BookingTableSeeder extends Seeder {
 				'end_date' => '2015-04-16',
 				'event' => 'Important Workshop'
 			));
-
+		$booking->users()->attach(1);
 		$booking = Booking::create(array(
 				'destination_branch_id' => 2,
 				'kit_id' => 2,
@@ -25,7 +25,7 @@ class BookingTableSeeder extends Seeder {
 				'end_date' => '2015-04-12',
 				'event' => 'Very Important Workshop'
 			));
-
+                $booking->users()->attach(4);
 		for($i = 0; $i < 50; ++$i){
 			$startDay = $faker->dateTimeBetween($startDate = 'now', $endDate = '+6 months');
 			$endDay = $startDay;
