@@ -30,7 +30,7 @@ class BookingsController extends \BaseController {
 		array_push($users, Auth::User()->id);
 		$destBranch = Auth::User()->branch_id;
 		if(strtotime($current) <= strtotime($date)){
-			foreach ($kitType->kits as $kit){		
+			foreach ($kitType->kits as $kit){
 				$invalidDates = array();
 				foreach ($kit->currentBookings as $booking){
 					for ($i = strtotime($booking->start_date), $end = strtotime($booking->end_date);
@@ -56,7 +56,7 @@ class BookingsController extends \BaseController {
 					$booking->users()->attach($users);
 					try {
 						foreach ($users as $id) {
-							$user = User::find($id); 
+							$user = User::find($id);
 
 							Mail::send('emails.bookingEmail',array('name' => $user->getName(),
 								'date' => $booking->start_date,'event' => $booking->event),
@@ -89,23 +89,27 @@ class BookingsController extends \BaseController {
 	}
 
 	public function destroy($id) {
+		$branch_id = "";
 		if ($booking = Booking::find($id)){
-			$user = Auth::user(); 
+			$user = Auth::user();
+			$branch_id = $booking->destination_branch_id;
+			if($user->permission_id == 2 || ($user->permission_id == 1 && $branch_id == $user->branch_id)){
+				$booking->destroy($id);
+				return Redirect::to("/summary/$branch_id");
+			}
 			$hit = false;
 			foreach ($booking->users->all() as $positive) {
 				if ($positive->id == $user->id) {
 					$hit = true;
-				}	
+					break;
+				}
 			}
-			if( $hit || ($user->permission_id == 2) || (($user->permission_id == 1) 
-					&& ($booking->kit->branch_id == $user->branch_id)))
-					$booking->destroy($id);
-			else
-				Session::flash('errors', array('You do not have permission to delete this booking.'));
+			if($hit) $booking->destroy($id);
+			else Session::flash('errors', array('You do not have permission to delete this booking.'));
 		}else{
 			Session::flash('errors', array('Unable to delete booking. Please contact system administrator.'));
 		}
-			
-			return Redirect::to('/summary');
+		$branch_id = "/$branch_id";
+		return Redirect::to("/summary$branch_id");
 	}
 }

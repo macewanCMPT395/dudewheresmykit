@@ -7,11 +7,13 @@ class SummaryController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index() {
+	public function index($passVal = 'mybookings') {
 		$branches = DB::table('Branches')
 			->select('id', 'name', 'code')
 			->orderBy('name', 'asc')->get();
 		$filter_value = Input::get('branch');
+		if($filter_value == '')
+			$filter_value = $passVal;
 		if($filter_value != 'mybookings' && $filter_value != '') {
 			$data = array (
 				'title' => "Bookings",
