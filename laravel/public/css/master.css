@@ -49,7 +49,7 @@ input[type=submit], input[type=button] {
 	text-transform: uppercase;
 }
 
-input[type=submit]:hover, input[type=button]:hover	 {
+input[type=submit]:hover, input[type=button]:hover {
 	background: #3cb0fd;
 	background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
 	background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
@@ -350,4 +350,12 @@ table {
 
 p {
 	margin: 0.5em 0 0.5em 0;
+}
+
+table tr[onclick] {
+	cursor: pointer;
+}
+
+table tr[onclick]:hover {
+	color: #bbb;
 }
