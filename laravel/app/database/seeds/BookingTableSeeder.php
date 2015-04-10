@@ -11,7 +11,7 @@ class BookingTableSeeder extends Seeder {
 				'destination_branch_id' => 1,
 				'kit_id' => 1,
 				'status_id' => 1,
-				'shipped' => '2015-04-12',
+				'shipped' => '2015-04-09',
 				'start_date' => '2015-04-13',
 				'end_date' => '2015-04-16',
 				'event' => 'Important Workshop'
@@ -21,7 +21,7 @@ class BookingTableSeeder extends Seeder {
 				'destination_branch_id' => 2,
 				'kit_id' => 2,
 				'status_id' => 3,
-				'start_date' => '2015-04-10',
+				'start_date' => '2015-04-12',
 				'end_date' => '2015-04-12',
 				'event' => 'Very Important Workshop'
 			));
