@@ -13,9 +13,9 @@
 		</tr>
 		@foreach($in as $booking)
 			@if ($booking->status->code == 'S')
-				<tr style="font-weight:bold;">
+				<tr style="font-weight:bold;" onclick="window.location='{{url("/summary/$booking->destination_branch_id")}}'">
 			@else
-				<tr style="background-color: #ddd; font-style:italic;">
+				<tr style="background-color: #ddd; font-style:italic;" onclick="window.location='{{url("/summary/$booking->destination_branch_id")}}'">
 			@endif
 			<td>
 				@if($booking->shipped)
@@ -52,9 +52,9 @@
 		</tr>
 		@foreach($out as $booking)
 			@if($booking->status->code != 'N')
-				<tr style="background-color: #ddd; font-style:italic;">
+				<tr style="background-color: #ddd; font-style:italic;" onclick="window.location='{{url("/summary/$booking->destination_branch_id")}}'">
 			@else
-				<tr style="font-weight:bold;">
+				<tr style="font-weight:bold;" onclick="window.location='{{url("/summary/$booking->destination_branch_id")}}'">
 			@endif
 			<td>{{{ $booking->ship_date }}}</td>
 			<td>{{{ $booking->kit->type->name }}}</td>
