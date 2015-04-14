@@ -3,23 +3,20 @@
 Installation instructions:
 
 First clone the repository and cd into it  Then execute the following commands:
-
+```bash
     $ cd laravel
     $ curl -sS https://getcomposer.org/installer | php
     $ php composer.phar install
     $ php artisan migrate
     $ php artisan db:seed
     $ php artisan serve
-
+```
 Email Instructions: 
 
-To change the email notifications to an actual sending email address:
-
-    $ cd laravel/app/config
-    $ vim mail.php
-    
-Change the values in each of the fields to match the required fields for the EPL mail:
-    This includes the PORT, HOST, DRIVER, USERNAME, PASSWORD, and FROM.
-    
-
-    
+To change the 'from' email address of the notification emails, edit the file `laravel/app/config/mail.php`. The fields that you will be interested in are:
+ * PORT - It will be dependent on your email provider
+ * HOST - It will be your email provider's address
+ * DRIVER - It will be dependent on your email provider
+ * USERNAME - Your specific email log in
+ * PASSWORD - Your private password
+ * FROM - The from address to be displayed
