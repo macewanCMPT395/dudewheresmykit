@@ -37,7 +37,7 @@
 					<td>{{{ $booking->start_date }}}</td>
 					<td>{{{ $booking->end_date }}}</td>
 					<td>{{{ $booking->users[0]->first_name }}} {{{ $booking->users[0]->last_name }}}</td>
-					<td><input type="submit" name="delete_button" value="Delete" onclick="window.location='/bookings/destroy/{{{ $booking->id }}}'"></td>
+					<td><a href="/bookings/destroy/{{{ $booking->id }}}"><input type="submit" name="delete_button" value="Delete" id="destructive" onclick="return confirm('Are you sure you want to delete booking ({{{ $booking->event }}})?')"></a></td>
 				</tr>
 			@endforeach
 		</table>

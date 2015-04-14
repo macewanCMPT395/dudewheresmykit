@@ -93,7 +93,7 @@ class BookingsController extends \BaseController {
 		if ($booking = Booking::find($id)){
 			$user = Auth::user();
 			$branch_id = $booking->destination_branch_id;
-			if($user->permission_id == 2 || ($user->permission_id == 1 && $branch_id == $user->branch_id)){
+			if($user->permission_id == 2 || ($user->permission_id == 1 && $branch_id == $user->branch_id)  || ($user->branch_id == $branch_id)){
 				$booking->destroy($id);
 				return Redirect::to("/summary/$branch_id");
 			}
