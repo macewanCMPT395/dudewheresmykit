@@ -32,7 +32,7 @@
 			<tr onclick="window.location='{{url("/transfers")}}'">
 				<td>{{{ $booking->kit->type->name }}}</td>
 				<td>{{{ $booking->kit->code }}}</td>
-				<td>{{{ $booking->kit->branch->name }}} ({{{ $booking->kit->branch->code }}})</td>
+				<td>{{{ $booking->destination->name }}} ({{{ $booking->destination->code }}})</td>
 				<td>{{{ $booking->status->description }}}</td>
 			</tr>
 		@endforeach
