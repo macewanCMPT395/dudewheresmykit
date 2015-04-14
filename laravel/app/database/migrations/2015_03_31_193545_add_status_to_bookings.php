@@ -8,8 +8,7 @@ class AddStatusToBookings extends Migration {
 	 */
 	public function up() {
 		Schema::table('Bookings', function(Blueprint $table) {
-			$table->integer('status_id')->nullable();
-			$table->foreign('status_id')->references('id')->on('Status');	
+			$table->foreign('status_id')->references('id')->on('Status');
 		});
 	}
 
@@ -20,7 +19,7 @@ class AddStatusToBookings extends Migration {
 	 */
 	public function down() {
 		Schema::table('Bookings', function(Blueprint $table) {
-			$table->dropColumn('status_id');	
+			$table->dropColumn('status_id');
 			$table->dropForeign('status_id_foreign');
 		});
 	}

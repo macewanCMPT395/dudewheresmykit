@@ -13,7 +13,6 @@ class KitTableSeeder extends Seeder {
 			'description' => "This is an iPad kit.",
 			'note' => '',
 			'branch_id' => 2,
-			'status_id' => 1,
 			'type_id' => 1
 		));
 		Kit::create(array(
@@ -21,7 +20,6 @@ class KitTableSeeder extends Seeder {
 			'description' => "This is an iPad kit.",
 			'note' => '',
 			'branch_id' => 1,
-			'status_id' => 2,
 			'type_id' => 1
 		));
 
@@ -35,7 +33,6 @@ class KitTableSeeder extends Seeder {
 					'description' => "This is a$kitType kit.",
 					'note' => ($faker->numberBetween(0, 10) == 5) ? 'Case is damaged' : '',
 					'branch_id' => $faker->numberBetween(1, $maxBranchType),
-					'status_id' => $faker->numberBetween(1, $maxStatusCode),
 					'type_id' => $kitTypes[$i]->id
 				));
 			}

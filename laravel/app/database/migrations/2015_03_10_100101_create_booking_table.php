@@ -18,6 +18,7 @@ class CreateBookingTable extends Migration {
             $table->string('event');
             $table->date('start_date');
             $table->date('end_date');
+            $table->integer('status_id');
 			$table->timestamps();
 		});
 	}
