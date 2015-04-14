@@ -45,12 +45,12 @@ class BookingsController extends \BaseController {
 					}
 
 					$booking = Booking::create(array(
+						'status_id' => 3,
 						'destination_branch_id' => $destBranch,
 						'start_date' => date('Y-m-d',$j),
 						'end_date' => $endDate,
 						'kit_id' => $kit->id,
 						'event' => $event,
-						'status_id' => 3
 					));
 
 					$booking->users()->attach($users);
@@ -95,6 +95,7 @@ class BookingsController extends \BaseController {
 			$branch_id = $booking->destination_branch_id;
 			if($user->permission_id == 2 || ($user->permission_id == 1 && $branch_id == $user->branch_id)){
 				$booking->destroy($id);
+				Session::flash('message', 'Successfully deleted the kit.');
 				return Redirect::to("/summary/$branch_id");
 			}
 			$hit = false;
@@ -104,8 +105,10 @@ class BookingsController extends \BaseController {
 					break;
 				}
 			}
-			if($hit) $booking->destroy($id);
-			else Session::flash('errors', array('You do not have permission to delete this booking.'));
+			if($hit){
+				$booking->destroy($id);
+				Session::flash('message', 'Successfully deleted the kit.');
+			}else Session::flash('errors', array('You do not have permission to delete this booking.'));
 		}else{
 			Session::flash('errors', array('Unable to delete booking. Please contact system administrator.'));
 		}
