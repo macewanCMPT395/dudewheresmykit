@@ -1,6 +1,12 @@
-# dudewheresmykit
+# Dude, Where's my Kit?! 
 
-Installation instructions:
+## Requirements
+
+1. PHP >= 5.4
+2. MCrypt PHP Extension
+3. PHP5-sqlite
+
+## Installation:
 
 First clone the repository and cd into it  Then execute the following commands:
 ```bash
@@ -11,7 +17,7 @@ First clone the repository and cd into it  Then execute the following commands:
     $ php artisan db:seed
     $ php artisan serve
 ```
-Email Instructions: 
+## Email Instructions: 
 
 To change the 'from' email address of the notification emails, edit the file `laravel/app/config/mail.php`. The fields that you will be interested in are:
  * PORT - It will be dependent on your email provider
