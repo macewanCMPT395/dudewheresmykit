@@ -1,5 +1,18 @@
 # Dude, Where's my Kit?! 
 
+## Description:
+Welcome to the kit management system README, This document includes everything
+you'll need to know for setting up and getting started. The Kit MTS is a system created
+to help users effectively manage bookings within the EPL. Included in the webapp is the ability to:
+* Create Bookings
+* Create new kits
+* View personal and branch bookings
+* Handle branch kit transfers
+
+Along with all of these great features, the home page also conviently list all trasnfers that require attention.
+This includes both incoming and outgoing transfers. The home page also lists any new kit types that have been added so that users can stay up to date on available kit types.
+
+
 ## Requirements
 
 1. PHP >= 5.4
